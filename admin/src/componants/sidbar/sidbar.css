@@ -1,0 +1,69 @@
+.sidbar {
+    flex: 1;
+    height: 100vh;
+    background-color: #ffd1d4;
+    position: sticky;
+    top: 50px;
+  }
+  .sidbarwraper{
+    padding: 20px;
+  }
+.sidbarimage{
+    width: 100%;
+    height: 250px ;
+    display:  inline-block;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 30px ;
+}
+.image{
+    width: 100%;
+    height: 250px ;
+    border-radius: 50%;
+   
+}
+.sidbarimage label{
+    color: black; 
+    margin-left: 55px;
+    font-size: 14px ;
+    opacity: .7; 
+    cursor: pointer;
+}
+.sidbarimage .name{
+    margin-left: 55px;
+    font-size: 19px ;
+    font-weight: 200;
+}
+.sidbarimage .post{
+    margin-left: 40px;
+    font-size: 25px ;
+    font-weight:bold;
+}
+.sidbarmenu{
+    margin-top: 20px;
+}
+.sidbartitle{
+    margin-left: 30px ;
+    font-size: 23px;
+    color: #9512ff;
+    margin-bottom: 12px;
+}
+.sidbarliste{
+    list-style: none;
+    padding: 5px;
+}
+.sidbaritems{
+    padding: 10px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    border-radius: 10px;
+    font-size: 20px ;
+    font-weight: 300;
+    margin-left: 10px ;
+    margin-bottom: 8px ;
+}
+.sidbaritems.active ,
+.sidbaritems:hover{
+    background-color: #fcedf2;
+}

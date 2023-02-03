@@ -1,0 +1,13 @@
+.home{
+    margin: 30px ;
+    font-size: 25px ;
+    letter-spacing: 1.5;
+}
+.home-span{
+    color: #c095e4;
+}
+.homeWidgets{
+    display: flex;
+    margin: 20px;
+}
+

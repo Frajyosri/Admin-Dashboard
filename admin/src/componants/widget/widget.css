@@ -1,0 +1,33 @@
+.widget{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+.widgetitems{
+    flex: 1;
+    margin: 0px 20px;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 15px -10px rgba(0,0,0,0.75) ;
+}
+.widgettitel{
+    font-size: 20px;
+}
+.widgetInfo{
+    margin: 10px 0px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.nbrCostomer{
+    font-size: 30px;
+    font-weight: 600;
+}
+.Rating{
+    display: flex;
+    align-items: center;   
+}
+.Subtitel{
+    font-size: 12px;
+    margin-left: 100px;
+}
