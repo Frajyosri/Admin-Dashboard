@@ -1,0 +1,61 @@
+.allside{
+    display: flex;
+    width: 100vw;
+    height: 100vh;
+    align-items: center;
+    justify-content: center;
+}
+.new{
+    text-decoration: none;
+    font-size: 12px ;
+    color: rgb(60, 60, 253);
+    margin-left: 65px ;
+}
+.leftside{
+    text-align: center;
+    margin-top: 50px ;
+    
+}
+.leftside img{
+    width: 550px ;
+    width: 450px;
+}
+.Logincontainer{
+
+    flex-direction: column;
+}
+h1{
+    font-size: 42px ;
+    font-family: 'Times New Roman', Times, serif, 'Arial Narrow', Arial, sans-serif;
+    margin-bottom: 10px ;
+}
+h3{
+font-size: 22px ;
+font-weight: 100;
+margin-left: 25px ;
+margin-bottom: 10px ;
+}
+.quote{
+    font-size: 32px ;
+}
+form{
+    display: flex;
+    flex-direction: column;
+    margin-left: 35px ;
+    gap: 10px ;
+}
+form input{
+    padding: 13px ;
+    border: 1px solid rgb(60, 60, 253);
+    border-radius: 15px ;
+}
+form button{
+    padding: 10px ;
+    background-color: rgb(60, 60, 253);
+    color: white;
+    cursor: pointer;
+    border: none;
+}
+form button:hover{
+    background-color: rgb(74, 74, 250);
+}

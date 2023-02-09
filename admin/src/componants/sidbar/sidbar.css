@@ -1,9 +1,12 @@
 .sidbar {
     flex: 1;
-    height: 100vh;
+    height: 155vh;
     background-color: #ffd1d4;
     position: sticky;
-    top: 50px;
+  }
+  .link{
+    text-decoration: none;
+    color: black;
   }
   .sidbarwraper{
     padding: 20px;
@@ -57,13 +60,36 @@
     cursor: pointer;
     display: flex;
     align-items: center;
-    border-radius: 10px;
     font-size: 20px ;
     font-weight: 300;
     margin-left: 10px ;
     margin-bottom: 8px ;
 }
-.sidbaritems.active ,
-.sidbaritems:hover{
+.sidbaritems.active {
+    background-color: #ffffff;
+    border-top-left-radius:20px ;
+    border-bottom-left-radius:20px ;
+    width: 108%;
+    display: flex;
+}
+.icon{
+    margin-right: 10px ;
+}
+.sidbaritems:hover,
+.sidbarlogout:hover{
     background-color: #fcedf2;
+    border-radius: 10px;
+}
+
+.sidbarlogout{
+    margin-top: 155px;
+    padding: 10px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    border-radius: 10px;
+    font-size: 20px ;
+    font-weight: 300;
+    margin-left: 10px ;
+    margin-bottom: 8px ;
 }

@@ -1,6 +1,7 @@
 import React from 'react';
 import "./sidbar.css";
-import { FaAward, FaCartArrowDown, FaCartPlus, FaHome, FaMapMarkerAlt, FaUserAlt } from 'react-icons/fa';
+import { FaAward, FaCartArrowDown, FaCartPlus, FaComment, FaHome, FaMapMarkerAlt, FaShareSquare, FaUserAlt } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
 
 
 const Sidbar = () => {
@@ -19,14 +20,15 @@ const Sidbar = () => {
                 <div className="sidbarmenu">
                     <h3 className="sidbartitle">Dashboard</h3>
                       <ul className='sidbarliste'>
-                        <li className='sidbaritems active ' ><FaHome/> Home </li>
-                        <li className='sidbaritems'><FaCartArrowDown/> Products</li>
-                        <li className='sidbaritems'><FaUserAlt/> Costomers</li>
-                        <li className='sidbaritems'><FaCartPlus/> Commandes </li>
-                        <li className='sidbaritems'> <FaAward/> Objective </li>
-                        <li className='sidbaritems'><FaMapMarkerAlt/> Geographie</li>
+                        <li className='sidbaritems active ' ><FaHome className='icon'/><Link to={"/"} className="link">Home</Link></li>
+                        <li className='sidbaritems'><FaCartArrowDown className='icon'/><Link to={"/product"} className="link">Produits</Link> </li>
+                        <li className='sidbaritems'><FaUserAlt className='icon'/> <Link to={"/user"} className="link">commerçant</Link></li>
+                        <li className='sidbaritems'><FaCartPlus className='icon'/><Link to={"/commande"} className="link">Commandes</Link>  </li>
+                        <li className='sidbaritems'> <FaAward className='icon'/> <Link to={"/objective"} className="link">Objective</Link> </li>
+                        <li className='sidbaritems'><FaMapMarkerAlt className='icon'/><Link to={"/location"} className="link">Geographie</Link> </li>
+                        <li className='sidbaritems'><FaComment className='icon'/><Link to={"/"} className="link">Rapport</Link> </li>
+                        <li className='sidbarlogout'><FaShareSquare className='icon' /><Link to={"/login"} className="link"> Exit </Link> </li>
                       </ul>
-
                 </div>
             </div>
         </div>

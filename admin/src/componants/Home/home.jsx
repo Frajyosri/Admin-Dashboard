@@ -8,11 +8,22 @@ import "./Home.css";
 
 
 const Home = () => {
+  const dateBuilder=(d)=>{
+    let months =["january","february","March","April",
+    "May","June","July","August","September","october","November","December"];
+    let days=["sunday","Monday","Tuesday","Wednesday","Thursday","friday","Saturday"];
+    let day= days[d.getDay()];
+    let date = d.getDate();
+    let Month= months[d.getMonth()];
+    let annee = d.getFullYear();
+    return `${day} ${date} ${Month} ${annee}`
+    }
     return (
         <>
          <div className="home">
-            Welcome Mr <span className="home-span">
-                Foulen</span>, Have a Nice Day 
+          <div > Welcome Mr <span className="home-span">
+                Foulen</span>, Have a Nice Day</div>
+                 {dateBuilder(new Date())}
         </div>
         <Widget/>
         <Chart data={userData} title="Commande  Analytics" grid dataKey="Total Commande "/>
