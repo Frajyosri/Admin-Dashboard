@@ -1,0 +1,24 @@
+.objective{
+    margin-top: 50px ;
+    height: auto;
+    width: 100%;
+    display: block;
+}
+.obheader{
+    display: flex ;
+    justify-content: space-between;
+    margin: 30px ;
+    align-items: center;
+}
+.singleobjective{
+    margin-top: 20px ;
+    background-color: white;
+    border-radius: 5px ;
+    box-shadow: 0px 0px 15px -10px rgba(0,0,0,0.75) ;
+    padding: 15px ;
+    cursor: pointer;
+}
+.del{
+    margin-left: 300px ;
+    cursor: pointer;
+}

@@ -1,27 +1,26 @@
 .allside{
     display: flex;
-    width: 100vw;
+    width: 100%;
     height: 100vh;
     align-items: center;
     justify-content: center;
+    margin-top: -70px ;
 }
 .new{
     text-decoration: none;
     font-size: 12px ;
     color: rgb(60, 60, 253);
-    margin-left: 65px ;
+    margin-left: 100px ;
 }
 .leftside{
     text-align: center;
-    margin-top: 50px ;
-    
+   
 }
 .leftside img{
     width: 550px ;
-    width: 450px;
+    height: 450px;
 }
 .Logincontainer{
-
     flex-direction: column;
 }
 h1{
@@ -37,6 +36,7 @@ margin-bottom: 10px ;
 }
 .quote{
     font-size: 32px ;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 form{
     display: flex;
@@ -45,9 +45,10 @@ form{
     gap: 10px ;
 }
 form input{
-    padding: 13px ;
+    padding: 15px ;
     border: 1px solid rgb(60, 60, 253);
     border-radius: 15px ;
+    width: 250px;   
 }
 form button{
     padding: 10px ;

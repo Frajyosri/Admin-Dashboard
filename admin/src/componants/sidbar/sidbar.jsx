@@ -26,7 +26,7 @@ const Sidbar = () => {
                         <li className='sidbaritems'><FaCartPlus className='icon'/><Link to={"/commande"} className="link">Commandes</Link>  </li>
                         <li className='sidbaritems'> <FaAward className='icon'/> <Link to={"/objective"} className="link">Objective</Link> </li>
                         <li className='sidbaritems'><FaMapMarkerAlt className='icon'/><Link to={"/location"} className="link">Geographie</Link> </li>
-                        <li className='sidbaritems'><FaComment className='icon'/><Link to={"/"} className="link">Rapport</Link> </li>
+                        <li className='sidbaritems'><FaComment className='icon'/><Link to={"/rapport"} className="link">Rapport</Link> </li>
                         <li className='sidbarlogout'><FaShareSquare className='icon' /><Link to={"/login"} className="link"> Exit </Link> </li>
                       </ul>
                 </div>

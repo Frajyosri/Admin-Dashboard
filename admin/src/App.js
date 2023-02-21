@@ -13,6 +13,7 @@ import Sidbar from './componants/sidbar/sidbar';
 import Error from "./componants/CosError/Error.jsx";
 import Login from "./pages/login/login";
 import Password from "./pages/Forgetpasword/password.jsx";
+import Rapport from "./pages/Rapport/Rapport";
 const router = createBrowserRouter([
     
       {
@@ -81,6 +82,17 @@ const router = createBrowserRouter([
         </div>  ,
         errorElement:<Error/>
       },
+      {
+        path: "/rapport",
+        element:
+       <div className='container'>    
+        <Sidbar/>
+        <div className="other">
+          <Rapport/>
+        </div>
+        </div>  ,
+        errorElement:<Error/>
+      },
   {
     path: "/login",
     element:<Login/> ,
@@ -90,7 +102,8 @@ const router = createBrowserRouter([
     path: "newpassword",
     element:<Password/> ,
     
-  }
+  },
+
 
 ]);
 function App() {

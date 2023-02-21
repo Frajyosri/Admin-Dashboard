@@ -1,0 +1,30 @@
+.addform{
+    display: flex;
+    flex-direction: column;
+    width: 300px ;
+    height: 350px ;
+    align-items: center;
+    justify-content: center;
+}
+.addform input{
+    padding: 15px ;
+    margin-bottom: 10px ;
+    outline: none;
+    border: none;
+    border-bottom: 1px solid rgb(0, 76, 255);
+}
+.stock{
+    display: flex;
+    margin-top: 10px ;
+    margin-bottom: 10px ;
+}
+.stock h4{
+    margin-right: 10px ;
+}
+.addform .spc{
+    padding: 15px ;
+    margin-bottom: 10px ;
+    margin-left: 10px ;
+    outline: none;
+    border: none;
+}

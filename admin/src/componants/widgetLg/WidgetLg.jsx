@@ -44,7 +44,7 @@ export default function WidgetLg() {
           <td className="widgetLgNam">Mohsen Rabhi</td>
           <td className="widgetLgAmount">122.00DT</td>
           <td className="widgetLgStatus">
-            <Button type="Annuler" />
+            <Button type="En_Cours" />
           </td>
         </tr>
         <tr className="widgetLgTr">
@@ -60,7 +60,7 @@ export default function WidgetLg() {
           <td className="widgetLgNam">Mohsen Rabhi</td>
           <td className="widgetLgAmount">122.00DT</td>
           <td className="widgetLgStatus">
-            <Button type="En_Cours" />
+            <Button type="Confirmer " />
           </td>
         </tr>
         <tr className="widgetLgTr">

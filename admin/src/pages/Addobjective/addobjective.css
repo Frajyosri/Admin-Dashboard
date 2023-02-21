@@ -1,0 +1,15 @@
+.addojective{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px ;
+}
+.addojective input{
+    padding: 10px ;
+    border-radius: 5px ;
+    color: rgb(46, 112, 255);
+}
+.addojective textarea{
+    width: 200px ;
+    height: 150px ;
+}

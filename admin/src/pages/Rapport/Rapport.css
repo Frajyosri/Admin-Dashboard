@@ -1,0 +1,38 @@
+.rapport h1{
+    margin-top: 50px ;
+    text-transform: capitalize;
+    margin-left: 12px ;
+}
+.wraprapport{
+    display: flex;
+    align-items: center;
+    margin-top: 20px ;
+    background-color: white;
+    border-radius: 5px ;
+    box-shadow: 0px 0px 15px -10px rgba(0,0,0,0.75) ;
+    padding: 15px ;
+    cursor: pointer;
+    justify-content: space-between;
+}
+
+.wraprapport img{
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+.singlraport{
+    display: flex;
+    align-items: center;
+}
+.content{
+    margin-left: 12px ;
+}
+.content p{
+    margin-top: 7px ;
+    margin-left: 20px ;
+}
+.hour{
+    margin-left: 600px ;
+    font-size: 16px ;
+}

@@ -1,0 +1,28 @@
+.widgetLgp{
+    padding: 20px ;
+    height: auto;
+}
+
+.widgetTitle{
+    font-size: 22px;
+    font-weight: 600;
+    margin-top: 30px ;
+}
+.widgetLgNam span{
+font-size: 20px ;
+font-weight: 500;
+text-transform: capitalize;
+}
+.next{
+    margin-right: 10px ;
+    cursor: pointer;
+}
+.vide {
+    text-align: center;
+    width: 100%;
+    height: auto;
+}
+.vide .videT{
+    margin-top: 30px ;
+    font-size: 32px ;
+}

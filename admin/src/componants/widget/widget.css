@@ -12,6 +12,7 @@
 }
 .widgettitel{
     font-size: 20px;
+    color: rgb(60,60,255);
 }
 .widgetInfo{
     margin: 10px 0px;
@@ -25,7 +26,8 @@
 }
 .Rating{
     display: flex;
-    align-items: center;   
+    align-items: center; 
+    color: rgb(67, 199, 31);  
 }
 .Subtitel{
     font-size: 12px;

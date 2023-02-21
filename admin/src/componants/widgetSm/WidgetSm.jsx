@@ -4,7 +4,7 @@ import "./widgetSm.css";
 export default function WidgetSm() {
   return (
     <div className="widgetSm">
-      <span className="widgetSmTitle">New Join Members</span>
+      <span className="widgetSmTitle">Les Nouveaux  Members</span>
       <ul className="widgetSmList">
         <li className="widgetSmListItem">
           <img
