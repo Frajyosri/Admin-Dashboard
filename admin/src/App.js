@@ -14,6 +14,9 @@ import Error from "./componants/CosError/Error.jsx";
 import Login from "./pages/login/login";
 import Password from "./pages/Forgetpasword/password.jsx";
 import Rapport from "./pages/Rapport/Rapport";
+import Historique from "./pages/historique/historique.jsx";
+import Edite from "./pages/editeProduct/editeProduct.jsx";
+import Search from "./pages/SearchProduct/SearchProduct.jsx"
 const router = createBrowserRouter([
     
       {
@@ -101,8 +104,39 @@ const router = createBrowserRouter([
   {
     path: "newpassword",
     element:<Password/> ,
-    
   },
+  {
+    path: "/historique/:id",
+    element:
+   <div className='container'>    
+    <Sidbar/>
+    <div className="other">
+      <Historique/>
+    </div>
+    </div>  ,
+    errorElement:<Error/>
+  },
+  {
+    path: "/edite/:id",
+    element:
+   <div className='container'>    
+    <Sidbar/>
+    <div className="other">
+      <Edite/>
+    </div>
+    </div>  ,
+    errorElement:<Error/>
+  },
+  {
+    path:"/search",
+    element:
+    <div className='container'>    
+    <Sidbar/>
+    <div className="other">
+      <Search/>
+    </div>
+    </div> 
+  }
 
 
 ]);

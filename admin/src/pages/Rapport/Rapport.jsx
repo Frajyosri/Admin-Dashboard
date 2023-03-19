@@ -1,5 +1,6 @@
 import React from 'react';
 import "./Rapport.css"
+import img from "../.././2953962.jpg";
 const Rapport = () => {
     const dateBuilder=(d)=>{
         let months =["january","february","March","April",
@@ -19,7 +20,10 @@ const Rapport = () => {
           </div>
             <h1>Tous  les Reclamations </h1>
             {  data.length ===0 ?
-              <div className='vide '><h3 className='videT '>Aucune Reclamation  ..</h3></div>
+              <div className='vide '>
+                <img src={img} alt='no Data '/>
+                <h3 className='videT '>Aucune Reclamation  ..</h3>
+                </div>
                 :
                 <>
                 <div className='wraprapport'>

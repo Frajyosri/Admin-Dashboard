@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import "./widgetSm.css";
 
 
@@ -16,9 +17,9 @@ export default function WidgetSm() {
             <span className="widgetSmUsername">Mohsen rabhi</span>
             <span className="widgetSmUserTitle">Tataouine</span>
           </div>
-          <button className="widgetSmButton">
+          <Link to={"/user"}  className="widgetSmButton">
             Display
-          </button>
+          </Link>
         </li>
         <li className="widgetSmListItem">
           <img

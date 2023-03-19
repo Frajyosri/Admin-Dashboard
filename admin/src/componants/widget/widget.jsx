@@ -6,7 +6,7 @@ const Widget = () => {
         <div>
              <div className="widget">
             <div className="widgetitems">
-                <span className='widgettitel'>Total Costomer</span>
+                <span className='widgettitel'>Total commerçant</span>
                 <div className="widgetInfo">
                     <span className='nbrCostomer'>55</span>
                     <span className='Rating'>+2.14</span>
@@ -23,7 +23,7 @@ const Widget = () => {
                 <span className='Subtitel'>Compared to last Month </span>
             </div>
             <div className="widgetitems">
-                <span className='widgettitel'>Sales</span>
+                <span className='widgettitel'>Chiffre d'Affert </span>
                 <div className="widgetInfo">
                     <span className='nbrCostomer'>155DT</span>
                     <span className='Rating'>+2.14 DT </span>

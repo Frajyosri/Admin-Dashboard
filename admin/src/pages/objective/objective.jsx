@@ -7,7 +7,7 @@ import DialogContent from '@mui/material/DialogContent';
 import DialogTitle from '@mui/material/DialogTitle';
 import {FaTrashAlt} from "react-icons/fa"
 import { Button } from '@mui/material';
-
+import img from "../.././2953962.jpg";
 const Objective = () => {
     const [open, setOpen] = React.useState(false);
     const [data,setdata]= React.useState([])
@@ -27,7 +27,10 @@ const Objective = () => {
             </div>
             <hr/>
             { data.length ===0 ?
-              <div className='vide '><h3 className='videT '>Aucune Objective  ..</h3></div>
+              <div className='vide '>
+                <img src={img} alt='no Data '/>
+                <h3 className='videT '>Aucune Objective  ..</h3>
+                </div>
                 :
                 <>
             <div className='singleobjective '>

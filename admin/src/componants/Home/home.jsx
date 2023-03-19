@@ -5,6 +5,7 @@ import { userData } from "../../dummyData";
 import WidgetLg from '../widgetLg/WidgetLg'; 
 import  WidgetSm from "../widgetSm/WidgetSm";
 import "./Home.css";
+import { useNavigate } from 'react-router-dom';
 
 
 const Home = () => {
@@ -18,11 +19,24 @@ const Home = () => {
     let annee = d.getFullYear();
     return `${day} ${date} ${Month} ${annee}`
     }
+
+    const User=localStorage.getItem("token");
+  
+    const navigate=useNavigate()
+    React.useEffect(() => {
+      if(User===null){ 
+       
+      navigate("/login");
+    }
+  
+    }, [User,navigate]);
+
+
     return (
         <>
          <div className="home">
           <div > Welcome Mr <span className="home-span">
-                Foulen</span>, Have a Nice Day</div>
+                {User}</span>, Have a Nice Day</div>
                  {dateBuilder(new Date())}
         </div>
         <Widget/>

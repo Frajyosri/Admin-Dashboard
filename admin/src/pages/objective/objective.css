@@ -22,3 +22,12 @@
     margin-left: 300px ;
     cursor: pointer;
 }
+.vide{
+    display: block;
+    align-items: center;
+    justify-content: center;
+}
+.vide img{
+    width: 350px ;
+    height: 350px ;
+}

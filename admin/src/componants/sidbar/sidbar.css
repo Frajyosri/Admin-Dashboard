@@ -1,7 +1,7 @@
 .sidbar {
     flex: 1;
     height: 155vh;
-    background-color: #0081B4;
+    background-color: #2173FD;
     position: sticky;
   }
   .link{
@@ -11,13 +11,22 @@
   .sidbarwraper{
     padding: 20px;
   }
+  .ibtn{
+    display: flex;
+    width: 100%;
+    background-color: transparent;
+    border: none;
+    font-size: 18px ;
+  }
 .sidbarimage{
     width: 100%;
     height: 250px ;
-    display:  inline-block;
+    display:  flex;
+    flex-direction: column;
     align-items: center;
     margin-bottom: 30px ;
-    text-align: center;
+   align-items: center;
+   justify-content: center;
 }
 .image{
     width: 150px ;
@@ -33,7 +42,7 @@
     cursor: pointer;
 }
 .sidbarimage .name{
-    margin-left: 19px;
+    align-items: center;
     font-size: 22px ;
     font-weight: 400;
 }

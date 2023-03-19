@@ -14,6 +14,10 @@ const Commande = () => {
     const Button = ({ type }) => {
         return <button className={"widgetLgButton " + type}>{type}</button>;
       };
+
+      const handelchange=e=>{
+        console.log(e.target.value)
+   }
     return (
         <div>
           <div className='date'>
@@ -29,6 +33,31 @@ const Commande = () => {
           <th className="widgetLgTh">Responsable </th>
           <th className="widgetLgTh">Montant</th>
           <th className="widgetLgTh">Status</th>
+          <th className="widgetLgTh">livreur </th>
+        </tr>
+        <tr className="widgetLgTr">
+          <td className="widgetLgUser">
+            <img
+              src="https://images.pexels.com/photos/4172933/pexels-photo-4172933.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
+              alt=""
+              className="widgetLgImg"
+            />
+            <span className="widgetLgName">Monjiya el souda </span>
+          </td>
+          <td className="widgetLgDate">2 Jun 2021</td>
+          <td className="widgetLgNam">Mohsen Rabhi</td>
+          <td className="widgetLgAmount">122.00DT</td>
+          <td className="widgetLgStatus">
+            <Button type="Confirmer" />
+          </td>
+          <td>
+            <select onChange={handelchange} className="livreur" >
+             <option value={null} selected>Choisir Un livreur </option>
+              <option value="Walid">Walid</option>
+              <option value="Walid">Walid</option>
+            </select>
+          </td>
+          <td><button className='confirmer '>Confirmer</button></td>
         </tr>
         <tr className="widgetLgTr">
           <td className="widgetLgUser">
@@ -46,102 +75,9 @@ const Commande = () => {
             <Button type="Confirmer" />
           </td>
         </tr>
-        <tr className="widgetLgTr">
-          <td className="widgetLgUser">
-            <img
-              src="https://images.pexels.com/photos/4172933/pexels-photo-4172933.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
-              alt=""
-              className="widgetLgImg"
-            />
-            <span className="widgetLgName">Monjiya el souda </span>
-          </td>
-          <td className="widgetLgDate">2 Jun 2021</td>
-          <td className="widgetLgNam">Mohsen Rabhi</td>
-          <td className="widgetLgAmount">122.00DT</td>
-          <td className="widgetLgStatus">
-            <Button type="Confirmer" />
-          </td>
-        </tr>
-        <tr className="widgetLgTr">
-          <td className="widgetLgUser">
-            <img
-              src="https://images.pexels.com/photos/4172933/pexels-photo-4172933.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
-              alt=""
-              className="widgetLgImg"
-            />
-            <span className="widgetLgName">Monjiya el souda </span>
-          </td>
-          <td className="widgetLgDate">2 Jun 2021</td>
-          <td className="widgetLgNam">Mohsen Rabhi</td>
-          <td className="widgetLgAmount">122.00DT</td>
-          <td className="widgetLgStatus">
-            <Button type="Confirmer" />
-          </td>
-        </tr>
-        <tr className="widgetLgTr">
-          <td className="widgetLgUser">
-            <img
-              src="https://images.pexels.com/photos/4172933/pexels-photo-4172933.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
-              alt=""
-              className="widgetLgImg"
-            />
-            <span className="widgetLgName">Monjiya el souda </span>
-          </td>
-          <td className="widgetLgDate">2 Jun 2021</td>
-          <td className="widgetLgNam">Mohsen Rabhi</td>
-          <td className="widgetLgAmount">122.00DT</td>
-          <td className="widgetLgStatus">
-            <Button type="Confirmer" />
-          </td>
-        </tr>
-        <tr className="widgetLgTr">
-          <td className="widgetLgUser">
-            <img
-              src="https://images.pexels.com/photos/4172933/pexels-photo-4172933.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
-              alt=""
-              className="widgetLgImg"
-            />
-            <span className="widgetLgName">Maram Marouma </span>
-          </td>
-          <td className="widgetLgDate">2 Jun 2021</td>
-          <td className="widgetLgNam">Mohsen Rabhi</td>
-          <td className="widgetLgAmount">122.00DT</td>
-          <td className="widgetLgStatus">
-            <Button type="Annuler" />
-          </td>
-        </tr>
-        <tr className="widgetLgTr">
-          <td className="widgetLgUser">
-            <img
-              src="https://images.pexels.com/photos/4172933/pexels-photo-4172933.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
-              alt=""
-              className="widgetLgImg"
-            />
-            <span className="widgetLgName">Nabil naboula </span>
-          </td>
-          <td className="widgetLgDate">2 Jun 2021</td>
-          <td className="widgetLgNam">Mohsen Rabhi</td>
-          <td className="widgetLgAmount">122.00DT</td>
-          <td className="widgetLgStatus">
-            <Button type="En_Cours" />
-          </td>
-        </tr>
-        <tr className="widgetLgTr">
-          <td className="widgetLgUser">
-            <img
-              src="https://images.pexels.com/photos/4172933/pexels-photo-4172933.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
-              alt=""
-              className="widgetLgImg"
-            />
-            <span className="widgetLgName">souad bouzidi </span>
-          </td>
-          <td className="widgetLgDate">2 Jun 2021</td>
-          <td className="widgetLgNam">Mohsen Rabhi</td>
-          <td className="widgetLgAmount">122.00DT</td>
-          <td className="widgetLgStatus">
-            <Button type="Confirmer " />
-          </td>
-        </tr>
+
+       
+    
       </table>
     </div>
         </div>

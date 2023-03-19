@@ -1,43 +1,37 @@
-import { Button } from '@mui/material';
-import React,{useEffect} from 'react';
-import { Link} from 'react-router-dom';
-import Add from "../addproduct/addproduct";
-import {FaPen, FaSistrix, FaTrashAlt} from "react-icons/fa"
-import Dialog from '@mui/material/Dialog';
-import DialogContent from '@mui/material/DialogContent';
-import DialogTitle from '@mui/material/DialogTitle';
-import "./product.css";
-import img from "../.././2953962.jpg";
-import axios from "axios";
+import axios from 'axios';
+import React from 'react';
+import { FaPen, FaTrashAlt } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
 import swal from 'sweetalert';
+import img from "../.././2953962.jpg";
+const SearchProduct = () => {
+    const [data,setdata]=React.useState([]);
+    const [query,Setquery]=React.useState('');
 
-const Product = () => {
-      const GetAllProduct=async ()=>{
-        const res= axios.get("http://localhost:8000/api/admin/produit");
-       setdata((await res).data.Product)
-      }
-     useEffect(()=>{
-      GetAllProduct()   
-     },[])
-      const [data,setdata]=React.useState([]);
-      const [open, setOpen] = React.useState(false);
-    
-      const handleClickOpen = () => {
-        setOpen(true);
-      };
-      const handleClickclose = () => {
-        setOpen(false);
-      };
-      
-      return (
-        <div>
-            <div className="widgetLgp">
-              <div className='cherchbox'>
-                <h1>Voulez-vous chercher quelque chose?</h1>
-              <Link to={`/search`}><button type='submit'  ><FaSistrix/> </button></Link>
+    const handelchange=e=>{
+        Setquery(e.target.value)
+        console.log(query)
+     }
+        const SearchProduct=async()=>{
+            try {
+              const res=await axios.get(`http://localhost:8000/api/admin/search?q=${query}`)
+             setdata(res.data.Product) 
+             console.log(res.data)  
+                } catch (error) {
+              <div className='erorpage'>
+                <img src='https://stock.adobe.com/images/page-not-found-error-404-a-hand-drawn-vector-layout-template-of-a-broken-robot-for-your-website-projects/119982932' alt='' />
               </div>
-              <Button variant="outlined" onClick={handleClickOpen}>
-                Ajouter produit </Button>
+              
+            }
+          }
+      
+    return (
+        <div>
+           <div className="widgetLgp">
+              <div className='cherchbox'>
+                <input type="text" name="nom"  placeholder='saisir le non de produit ' onChange={handelchange}/>
+              <button type='submit' onClick={SearchProduct} >Chercher </button>
+              </div>
               </div>
               <h3 className="widgetTitle">Tous les produits  </h3>
               {data.length===0?
@@ -58,7 +52,7 @@ const Product = () => {
         <tr className="widgetLgTr" key={element.id} >
         <td className="widgetLgUser" >
           <img
-            src={element.image }
+            src={ `../../Uploads`+ `/`+`${element.image}` }
             alt=""
             className="widgetLgImg"
           />
@@ -97,19 +91,8 @@ const Product = () => {
                 
 }
              
-          <Dialog
-            open={open}
-            keepMounted
-            onClose={handleClickclose}
-          >
-            <DialogTitle>{"Ajouter produit "}</DialogTitle>
-            <DialogContent >
-              <Add/>
-            </DialogContent>
-          </Dialog>
         </div>
-      );
-              
-    }
-      
-export default Product;
+    );
+}
+
+export default SearchProduct;

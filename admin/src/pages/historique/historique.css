@@ -1,0 +1,29 @@
+.hist{
+    text-align: center;
+    justify-content: center;
+    padding: 20px ;
+}
+.hist span{
+    font-size: 22px ;
+    font-weight: 500;
+    margin-bottom: 20px ;
+}
+.hist h2{
+    margin-top: 25px ;
+    margin-bottom: 20px ;
+    font-size: 32px ;
+    color: #3e31f8 ;
+    font-weight:200 ;
+}
+.tableTr{
+    text-align: left;
+    border-bottom: 1px solid ;
+}
+.widgetLgTablepaiment{
+    width: 100%;
+    border-spacing: 20px;
+}
+.Date,.Montant{
+    border-bottom: 1px solid;
+    padding: 10px ;
+}

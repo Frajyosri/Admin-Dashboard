@@ -37,7 +37,20 @@
   .widgetLgDate,.widgetLgAmount,.widgetLgNam{
     font-weight: 300;
   }
-  
+  .livreur{
+    border: 1px solid;
+    width: 150px ;
+    height: 25px ;
+    text-align: center;
+    border-radius: 5px ;
+  }
+  .confirmer{
+    padding: 7px ;
+    border-radius: 5px ;
+    background-color:transparent;
+    cursor: pointer;
+    color: #3bb077;
+  }
   .widgetLgButton {
     padding: 5px 7px;
     border: none;

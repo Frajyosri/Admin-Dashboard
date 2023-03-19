@@ -23,6 +23,20 @@ text-transform: capitalize;
     height: auto;
 }
 .vide .videT{
-    margin-top: 30px ;
+    margin-top: 20px ;
     font-size: 32px ;
+}
+.hidbtn{
+    border: none;
+    background-color: transparent;
+}
+.erorpage{
+    width: 100%;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+}
+.erorpage img{
+    width: 350px ;
+    height: 350px ;
 }
