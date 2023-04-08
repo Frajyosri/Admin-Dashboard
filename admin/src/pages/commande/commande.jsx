@@ -1,6 +1,27 @@
-import React from 'react';
+import React,{useState,useEffect} from 'react';
 import "./commande.css"
+import useSWR from "swr"
+import axios from 'axios';
+import img from "../.././2953962.jpg";
+import swal from 'sweetalert';
+import { Link, useNavigate } from 'react-router-dom';
+import moment from "moment"
 const Commande = () => {
+  const [livreur,setlivreur]= useState([]);
+  const navigate = useNavigate();
+  const User=localStorage.getItem("token");
+  useEffect(() => {
+    if(User===null){ 
+       
+      navigate("/login");
+    }
+  }, [User,navigate]);
+  const [form,setform]= useState({
+    idliv:0
+  });
+  const fetcher = url => axios.get("http://localhost:8000/api/admin/Commande").then((res)=>res.data)
+  const {data}=useSWR("http://localhost:8000/api/admin/Commande",fetcher)
+  console.log(data)
   const dateBuilder=(d)=>{
     let months =["january","february","March","April",
     "May","June","July","August","September","october","November","December"];
@@ -16,14 +37,29 @@ const Commande = () => {
       };
 
       const handelchange=e=>{
-        console.log(e.target.value)
+        setform({[e.target.name]:e.target.value})
    }
+   console.log(form)
+   React.useEffect(() => {
+     const GetAlllivreur=async()=>{
+      const reselt=await axios.get("http://localhost:8000/api/admin/livreurBydispo")
+      console.log(reselt.data.livreur)
+      setlivreur(reselt.data.livreur)
+     }
+     GetAlllivreur()
+   }, []);
     return (
         <div>
           <div className='date'>
             {dateBuilder(new Date())}
           </div>
-           
+          {data===undefined ||data.length===0?
+               <div className='vide '>
+               <img src={img} alt='no Data '/>
+               <h3 className='videT '>Aucune Commercant   ..</h3>
+               </div>
+                :
+                <>
             <div className="widgetLg">
       <h3 className="widgetLgTitle">Tous les Commandes</h3>
       <table className="widgetLgTable">
@@ -31,55 +67,76 @@ const Commande = () => {
           <th className="widgetLgTh">Client </th>
           <th className="widgetLgTh">Date</th>
           <th className="widgetLgTh">Responsable </th>
-          <th className="widgetLgTh">Montant</th>
+          <th className="widgetLgTh">etat</th>
           <th className="widgetLgTh">Status</th>
           <th className="widgetLgTh">livreur </th>
         </tr>
-        <tr className="widgetLgTr">
-          <td className="widgetLgUser">
+        {data.map(commande => (<tr className="widgetLgTr">
+          <td className="widgetLgUser" key={commande.id_cmd}>
             <img
-              src="https://images.pexels.com/photos/4172933/pexels-photo-4172933.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
+              src="https://th.bing.com/th/id/OIP.llkcvAulBp_qTfYnqOWE6AHaHW?w=215&h=212&c=7&r=0&o=5&pid=1.7"
               alt=""
               className="widgetLgImg"
             />
-            <span className="widgetLgName">Monjiya el souda </span>
+           <Link to={`/detail/${commande.id}`} className="link"><span className="widgetLgName">{commande.Client.nom} {commande.Client.prenom} </span></Link> 
           </td>
-          <td className="widgetLgDate">2 Jun 2021</td>
-          <td className="widgetLgNam">Mohsen Rabhi</td>
-          <td className="widgetLgAmount">122.00DT</td>
+          <td className="widgetLgDate">{commande.Date_cmd=moment().format("MMM Do YY")} </td>
+          <td className="widgetLgNam">{commande.commercant.Nom} {commande.commercant.prenom} </td>
+          <td className="widgetLgAmount">
+          {
+              commande.ispayed===false?
+              <button className="notPayed">non  payé </button>
+              :
+              <button className="isPayed">payé</button>
+            }
+          </td>
           <td className="widgetLgStatus">
-            <Button type="Confirmer" />
+            <Button type={commande.etat} />
           </td>
+          {commande.idliv ?
           <td>
-            <select onChange={handelchange} className="livreur" >
-             <option value={null} selected>Choisir Un livreur </option>
-              <option value="Walid">Walid</option>
-              <option value="Walid">Walid</option>
+            <select onChange={handelchange} className="livreur"  >
+            <option  value={commande.idliv} selected>{commande.livreur.nomliv} {commande.livreur.prenomliv}  </option>
             </select>
           </td>
-          <td><button className='confirmer '>Confirmer</button></td>
-        </tr>
-        <tr className="widgetLgTr">
-          <td className="widgetLgUser">
-            <img
-              src="https://images.pexels.com/photos/4172933/pexels-photo-4172933.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
-              alt=""
-              className="widgetLgImg"
-            />
-            <span className="widgetLgName">Monjiya el souda </span>
-          </td>
-          <td className="widgetLgDate">2 Jun 2021</td>
-          <td className="widgetLgNam">Mohsen Rabhi</td>
-          <td className="widgetLgAmount">122.00DT</td>
-          <td className="widgetLgStatus">
-            <Button type="Confirmer" />
-          </td>
-        </tr>
+          :
+          <>
+           <td>
+            <select onChange={handelchange} className="livreur" name='idliv' >
 
+            <option  value={null} selected> Choisire Un Livreur  </option>
+              {livreur.map((liv)=>(
+                <option value={liv.id}  >{liv.nomliv} {liv.prenomliv} </option>
+              ))}
+            </select>
+          </td>
+          <td><button className='confirmer ' onClick={async(e)=>{
+            e.preventDefault();
+              const res= await axios.put(`http://localhost:8000/api/admin/Commande/${commande.id}`,{
+                idliv:parseInt(form.idliv)
+              })
+               console.log(res)
+              console.log(form)
+             if(res.statusText==="OK") {
+                swal("Un Livreur  a eté Definir Pour Ce Commande  ", "sucsses", {
+                  button: "Ok ",
+                });
+              }
+          
+          
+          }}>Confirmer</button></td>
        
+          </>
+        }
+         </tr> 
+       ))
+        
+          }
     
       </table>
     </div>
+    </>
+}
         </div>
     );
 }

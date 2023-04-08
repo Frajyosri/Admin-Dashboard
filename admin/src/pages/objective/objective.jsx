@@ -8,9 +8,16 @@ import DialogTitle from '@mui/material/DialogTitle';
 import {FaTrashAlt} from "react-icons/fa"
 import { Button } from '@mui/material';
 import img from "../.././2953962.jpg";
+import axios from 'axios';
+import useSWR from "swr"
+import useSWRImmutable from 'swr/immutable'
+import swal from 'sweetalert';
+
 const Objective = () => {
     const [open, setOpen] = React.useState(false);
-    const [data,setdata]= React.useState([])
+    const fetcher = url => axios.get("http://localhost:8000/api/admin/AllObjective").then((res)=>res.data.Objective)
+    const {data,error}=useSWR("http://localhost:8000/api/admin/AllObjective",fetcher)
+    console.log(data)
       const handleClickOpen = () => {
         setOpen(true);
       };
@@ -19,6 +26,7 @@ const Objective = () => {
         setOpen(false);
       };
     return (
+    
         <div className='objective '>
             <div className="obheader">
                 <h1>Liste of objective </h1>
@@ -26,27 +34,44 @@ const Objective = () => {
                 Ajouter Nouveaux Objective </Button>
             </div>
             <hr/>
-            { data.length ===0 ?
+            { data===undefined ||data.length===0?
               <div className='vide '>
                 <img src={img} alt='no Data '/>
                 <h3 className='videT '>Aucune Objective  ..</h3>
                 </div>
                 :
-                <>
-            <div className='singleobjective '>
-                <h2>Effectuer une 50 operation de vente </h2>
-                <p>Effectuer une 50 operation de vente pour Amelioré votre Classement et agrandir votre Porçentage de vente  <FaTrashAlt className='del'/> </p>
+                data.map((obj)=>(
+            <div className='singleobjective ' key={obj.id}>
+                <h2>{obj.Titel}</h2>
+                <div className="description">
+                <p>{obj.Description}</p> 
+                <button className='hidbtn' onClick={(e)=>{
+                   e.preventDefault();
+                   swal({
+                     title: "Are you sure?",
+                     text: "Once deleted, anyone will not be able to see this objective anymore !",
+                     icon: "warning",
+                     buttons: true,
+                     dangerMode: true,
+                   })
+                   .then((willDelete) => {
+                     if (willDelete) {
+                      const response=  axios.delete(`http://localhost:8000/api/admin/objective/${obj.id}`)
+                       swal("Poof! Your objective has been deleted!", {
+                         icon: "success",
+                       });
+                       window.location.reload();
+                     } else {
+                       swal("Objective Not deleted ");
+                     }
+                   });
+                }}>
+                <FaTrashAlt className='del'/></button>  
+                </div>
+                
             </div>
-            <div className='singleobjective '>
-                <h2>Effectuer une 100 operation de vente </h2>
-                <p>Effectuer une 100 operation de vente pour Amelioré votre Classement et agrandir votre Porçentage de vente  <FaTrashAlt className='del'/> </p>
+                ))
                
-            </div>
-            <div className='singleobjective '>
-                <h2>Effectuer une 150 operation de vente </h2>
-                <p>Effectuer une 150 operation de vente pour Amelioré votre Classement et agrandir votre Porçentage de vente  <FaTrashAlt className='del'/></p>
-            </div>
-            </>
                     }
             <Dialog
             open={open}
@@ -55,11 +80,10 @@ const Objective = () => {
           >
             <DialogTitle>{"Ajouter Nouveaux Objective"}</DialogTitle>
             <DialogContent>
-              <Add/>
+              <Add />
             </DialogContent>
             <DialogActions>
-              <Button onClick={handleClose} >Ajouter</Button>
-              <Button onClick={handleClose}>Annuler</Button>
+              <Button onClick={handleClose}>Retour</Button>
             </DialogActions>
           </Dialog>
         </div>

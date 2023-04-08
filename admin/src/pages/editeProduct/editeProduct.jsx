@@ -1,28 +1,39 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { Link, useParams } from 'react-router-dom';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 import swal from 'sweetalert';
 const EditeProduct = () => {
+  const navigate=useNavigate()
   const [formData, setFormData] = useState({
     nom:"",
     description:"",
-    prix:"",
-    color:"color",
-    pht:"",
-    pat:"",
-    remise:""
+    prix:0.0,
+    color:"",
+    pht:0.0,
+    pat:0.0,
+    remise:0.0
   });
   const { id } = useParams();
   const handleInputChange = (event) => {
     const { name, value } = event.target;
-    setFormData({ ...formData, [name]: value });
+    setFormData({ ...formData, [name]:value });
+    console.log(formData)
   };
   const handleSubmit = (event) => {
     event.preventDefault();
     try {
-       axios.put(`http://localhost:8000/api/admin/produit/${id}`, formData).then((response) => {
+       axios.put(`http://localhost:8000/api/admin/produit/${id}`, {
+        nom:formData.nom,
+        description:formData.description,
+        prix: parseFloat(formData.prix) ,
+        color:formData.color,
+        pht:parseFloat(formData.pht),
+        pat:parseFloat(formData.pat),
+        remise:parseFloat(formData.remise)
+       }).then((response) => {
       if(response.status===201){
         swal("Good job!", "Produit a eté Modifier ", "success");
+        navigate("/product")
       }
     });
     } catch (error) {
@@ -56,8 +67,8 @@ const EditeProduct = () => {
         <h4>Le color disponible ? : </h4>
         <input type="color" name="color" className='spc'   onChange={handleInputChange}/>
       </div>
-      <input type="number" name="pht" placeholder='saisir le prix de produit sans tages ' value={formData.pat} onChange={handleInputChange}  />
-      <input type="number" name="pat" placeholder='saisir le prix de produit avec tages ' value={formData.pht} onChange={handleInputChange} />
+      <input type="number" name="pht" placeholder='saisir le prix de produit sans tages ' value={formData.pht} onChange={handleInputChange}  />
+      <input type="number" name="pat" placeholder='saisir le prix de produit avec tages ' value={formData.pat} onChange={handleInputChange} />
       <input type="number" name="remise" placeholder="saisir le remise s'il existe  " value={formData.remise} onChange={handleInputChange}  />
       <div className="bottom">
          <button className='Abtn'>Update </button>

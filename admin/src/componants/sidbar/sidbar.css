@@ -1,6 +1,6 @@
 .sidbar {
     flex: 1;
-    height: 155vh;
+    height: 160vh;
     background-color: #2173FD;
     position: sticky;
   }
@@ -33,6 +33,7 @@
     height: 150px ;
     border-radius: 50%;
     margin-bottom: 20px ;
+    background-size: cover;
 }
 .sidbarimage label{
     color: black; 

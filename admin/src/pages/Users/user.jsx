@@ -1,115 +1,126 @@
-import React from 'react';
-import { FaTrashAlt,FaRedoAlt, FaSistrix} from 'react-icons/fa';
+import React,{useEffect} from 'react';
+import { FaTrashAlt,FaRedoAlt, FaSistrix, FaCheck} from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import "./user.css";
+import useSWR from "swr"
+import useSWRImmutable from 'swr/immutable'
+import axios from 'axios';
+import img from "../.././2953962.jpg";
+import swal from 'sweetalert';
+import { useNavigate } from 'react-router-dom';
+
 const User = () => {
+  const [montant,setmontant]=React.useState(0)
+  const navigate = useNavigate();
+  const User=localStorage.getItem("token");
+  useEffect(() => {
+    if(User===null){ 
+       
+      navigate("/login");
+    }
+  }, [User,navigate]);
+  const fetcher = url => axios.get("http://localhost:8000/api/admin/Comercant").then((res)=>res.data)
+  const {data,error}=useSWR("http://localhost:8000/api/admin/Comercant",{
+    revalidateIfStale: true,
+    revalidateOnFocus: true,
+    revalidateOnReconnect: true
+  }
+  )
+  useSWRImmutable("http://localhost:8000/api/admin/Comercant",fetcher)
+  console.log(data)
     return (
         <div>
-          
             <div className="widgetLg">
               <div className='cherchbox'>
                 <h1>Voulez-vous chercher quelque chose?</h1>
-              <Link to={`/search`}><button type='submit'  ><FaSistrix/> </button></Link>
+              <Link to={`/searchComercant`}><button type='submit'  ><FaSistrix/> </button></Link>
             </div>
-        <h3 className="widgetLgTitle">Tous les Commerçants </h3>
-        <table className="widgetLgTable">
-        <tr className="widgetLgTr">
-          <th className="widgetLgTh">Commerçant </th>
-          <th className="widgetLgTh">Adresse </th>
-          <th className="widgetLgTh">Email</th>
-          <th className="widgetLgTh">Nomber de Commande </th>
-          <th className="widgetLgTh">Montant a Gagner</th>
-          <th className="widgetLgTh">5ales ? </th>
-          <th className="widgetLgTh">Action </th>
-        </tr>
-        <tr className="widgetLgTr">
-          <td className="widgetLgUser">
-            <img
-              src="https://images.pexels.com/photos/4172933/pexels-photo-4172933.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
-              alt=""
-              className="widgetLgImg"
-            />
-            <span className="widgetLgName"> <Link to={"/historique/1"} className="link"> Monjiya el souda </Link>  </span>
-          </td>
-          <td className="widgetLgDate">Tunis</td>
-          <td className="widgetLgNam">Mongia@gmail.com</td>
-          <td className="widgetLgAmount">3</td>
-          <td className="widgetLgAmount">150DT</td>
-          <td className="widgetLgAmount">
-            <select>
-                <option value={"non"}>Non</option>
-                <option value={"oui"}>oui</option>
-            </select>
-          </td>
-          <td className="widgetLgStatus">
-          <FaTrashAlt className='next'/>
-          < FaRedoAlt className='next'/>
-          </td>
-        </tr>
-        <tr className="widgetLgTr">
-          <td className="widgetLgUser">
-            <img
-              src="https://images.pexels.com/photos/4172933/pexels-photo-4172933.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
-              alt=""
-              className="widgetLgImg"
-            />
-            <span className="widgetLgName">Monjiya el souda </span>
-          </td>
-          <td className="widgetLgDate">Tunis</td>
-          <td className="widgetLgNam">Mongia@gmail.com</td>
-          <td className="widgetLgAmount">3</td>
-          <td className="widgetLgAmount">150DT</td>
-          <td className="widgetLgAmount">
-          <select>
-                <option value={false} selected>Non</option>
-                <option value={true}>oui</option>
-            </select>
-          </td>
-          <td className="widgetLgStatus"></td>
-        </tr>
-        <tr className="widgetLgTr">
-          <td className="widgetLgUser">
-            <img
-              src="https://images.pexels.com/photos/4172933/pexels-photo-4172933.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
-              alt=""
-              className="widgetLgImg"
-            />
-            <span className="widgetLgName">Monjiya el souda </span>
-          </td>
-          <td className="widgetLgDate">Tunis</td>
-          <td className="widgetLgNam">Mongia@gmail.com</td>
-          <td className="widgetLgAmount">3</td>
-          <td className="widgetLgAmount">150DT</td>
-          <td className="widgetLgAmount">
-            <select>
-                <option value={"oui"}>oui</option>
-                <option value={"Non"}>Non</option>
-            </select>
-          </td>
-          <td className="widgetLgStatus"></td>
-        </tr>
-        <tr className="widgetLgTr">
-          <td className="widgetLgUser">
-            <img
-              src="https://images.pexels.com/photos/4172933/pexels-photo-4172933.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
-              alt=""
-              className="widgetLgImg"
-            />
-            <span className="widgetLgName">Monjiya el souda </span>
-          </td>
-          <td className="widgetLgDate">Tunis</td>
-          <td className="widgetLgNam">Mongia@gmail.com</td>
-          <td className="widgetLgAmount">3</td>
-          <td className="widgetLgAmount">150DT</td>
-          <td className="widgetLgAmount">
-          <select>
-                <option value={"non"}>Non</option>
-                <option value={"oui"}>oui</option>
-            </select>
-          </td>
-          <td className="widgetLgStatus"></td>
-        </tr>
+       
+        {data===undefined ||data.length===0?
+               <div className='vide '>
+               <img src={img} alt='no Data '/>
+               <h3 className='videT '>Aucune Commercant   ..</h3>
+               </div>
+                :
+                <>
+                 <h3 className="widgetLgTitle">Tous les Commerçants </h3>
+                <table className="widgetLgTable">
+                <tr className="widgetLgTr">
+                  <th className="widgetLgTh">Commerçant </th>
+                  <th className="widgetLgTh">Adresse </th>
+                  <th className="widgetLgTh">Email</th>
+                  <th className="widgetLgTh">Nomber de Commande </th>
+                  <th className="widgetLgTh">Montant a Gagner</th>
+                  <th className="widgetLgTh">payé </th>
+                  <th className="widgetLgTh">Action </th>
+                </tr>
+                {data.map((com)=>(
+                    <tr className="widgetLgTr">
+                    <td className="widgetLgUser">
+                      <img
+                        src={com.image}
+                        alt=""
+                        className="widgetLgImg"
+                      />
+                      <span className="widgetLgName"> <Link to={`/historique/${com.id}`} className="link"> {com.Nom } { com.prenom}</Link>  </span>
+                    </td>
+                    <td className="widgetLgDate">{com.Adress} </td>
+                    <td className="widgetLgNam">{com.email}</td>
+                    <td className="widgetLgAmount">{com.commande.length}</td>
+                    <td className="widgetLgAmount">{com.montant_actuelle} </td>
+                    <td className="widgetLgAmount">
+                      <select onChange={()=>{
+                        console.log(montant)
+                      }}>
+                          <option value={false} >Non</option>
+                          <option value={true}>oui</option>
+                      </select>
+                    </td>
+                    <td className="widgetLgStatus">
+                    <button className='hidbtn' 
+                    onClick={(e)=>{
+                      e.preventDefault();
+                      swal({
+                        title: "Are you sure?",
+                        text: "Once deleted, you will not be able to see this Commerçant anymore !",
+                        icon: "warning",
+                        buttons: true,
+                        dangerMode: true,
+                      })
+                      .then((willDelete) => {
+                        if (willDelete) {
+                         const response=  axios.delete(`http://localhost:8000/api/admin/comercant/${com.id}`)
+                          swal("Poof! Commerçant has been deleted!", {
+                            icon: "success",
+                          });
+                        } else {
+                          swal("Commerçant Not deleted ");
+                        }
+                      });
+                 }} 
+                    ><FaTrashAlt className='next'/></button> 
+                   <button className='hidbtn' onClick={async(e)=>{
+                    e.preventDefault();
+                    const res=await axios.put(`http://localhost:8000/api/admin/commercant/reset/${com.id}`)
+                    console.log(res)
+                   }} >< FaRedoAlt className='next'/></button> 
+                   <button className='hidbtn' onClick={async(e)=>{
+                    const response=await axios.post(`http://localhost:8000/api/admin/historique/${com.id}`,{
+                      montant:com.montant_actuelle,
+                    })
+                    if(response.status===200){
+                      swal("Poof! Commerçant Salary  has been Updated!", {
+                        icon: "success",
+                      });
+                    }
+                   }}><FaCheck className='next'/></button> 
+                    </td>
+                  </tr>
+                ))}
+      
         </table>
+        </>     
+        }
         </div>
         </div>
     );

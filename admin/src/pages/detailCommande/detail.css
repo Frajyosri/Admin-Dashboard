@@ -1,0 +1,46 @@
+.card{
+    display: flex;
+    align-items: center;
+}
+.card-body{
+    display: flex;
+    justify-content: space-around;
+}
+.client span{
+    color: rgba(0, 94, 255, 0.582);
+}
+.table{
+    width: 95%;
+    margin-top: 70px;
+    margin-left: 10px;
+    justify-content: center;
+    align-items: center;
+}
+.table table{
+    width: 100%;
+    border-spacing: 20px ;
+    border-collapse: separate;
+}
+.Total span{
+    color: rgba(0, 94, 255, 0.582);
+    font-size: 30px;
+    font-weight: bold;
+    text-align:right ;
+}
+.Total{
+    font-size: 30px;
+    font-weight: bold;
+    text-align:right ; 
+}
+
+.Condition{
+    color: rgba(0, 94, 255, 0.582);
+    font-size: 30px;
+    font-weight: bold;
+    margin-top: 250px ;
+    margin-left: 15px ;
+}
+.remarque{
+    font-weight: 600;
+    margin-left: 20px ;
+}

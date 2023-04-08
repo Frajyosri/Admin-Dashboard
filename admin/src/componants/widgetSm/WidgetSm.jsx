@@ -1,87 +1,50 @@
+import axios from "axios";
 import { Link } from "react-router-dom";
 import "./widgetSm.css";
-
+import useSWR from "swr"
+import useSWRImmutable from 'swr/immutable'
 
 export default function WidgetSm() {
+  const fetcher = url => axios.get("http://localhost:8000/api/admin/lastCommercant").then((res)=>res.data.reslt)
+  const {data,error}=useSWR("http://localhost:8000/api/admin/lastCommercant",{
+    revalidateIfStale: false,
+    revalidateOnFocus: true,
+    revalidateOnReconnect: true
+  }
+  )
+console.log(data)
+  useSWRImmutable("http://localhost:8000/api/admin/lastCommercant",fetcher)
   return (
     <div className="widgetSm">
       <span className="widgetSmTitle">Les Nouveaux  Members</span>
-      <ul className="widgetSmList">
+      {
+        !data||data.length===0?
+        <div className='vide '>
+               <h3 className='videtext '>Aucune Nouveux Member  ..</h3>
+               </div>
+               :
+                data.map((item)=>(<>
+                <ul className="widgetSmList">
         <li className="widgetSmListItem">
           <img
-            src="https://images.pexels.com/photos/3992656/pexels-photo-3992656.png?auto=compress&cs=tinysrgb&dpr=2&w=500"
+            src={item.image}
             alt=""
             className="widgetSmImg"
           />
           <div className="widgetSmUser">
-            <span className="widgetSmUsername">Mohsen rabhi</span>
-            <span className="widgetSmUserTitle">Tataouine</span>
+            <span className="widgetSmUsername">{item.Nom } { item.prenom} </span>
+            <span className="widgetSmUserTitle">{item.Adress} </span>
           </div>
           <Link to={"/user"}  className="widgetSmButton">
             Display
           </Link>
         </li>
-        <li className="widgetSmListItem">
-          <img
-            src="https://images.pexels.com/photos/3992656/pexels-photo-3992656.png?auto=compress&cs=tinysrgb&dpr=2&w=500"
-            alt=""
-            className="widgetSmImg"
-          />
-          <div className="widgetSmUser">
-            <span className="widgetSmUsername">Rchid Ammar</span>
-            <span className="widgetSmUserTitle">Kairaouane</span>
-          </div>
-          <button className="widgetSmButton">
-           
-            Display
-          </button>
-        </li>
-        <li className="widgetSmListItem">
-          <img
-            src="https://images.pexels.com/photos/3992656/pexels-photo-3992656.png?auto=compress&cs=tinysrgb&dpr=2&w=500"
-            alt=""
-            className="widgetSmImg"
-          />
-          <div className="widgetSmUser">
-            <span className="widgetSmUsername">Fandouli </span>
-            <span className="widgetSmUserTitle">Sidi bouzide </span>
-          </div>
-          <button className="widgetSmButton">
-           
-            Display
-          </button>
-        </li>
-        <li className="widgetSmListItem">
-          <img
-            src="https://images.pexels.com/photos/3992656/pexels-photo-3992656.png?auto=compress&cs=tinysrgb&dpr=2&w=500"
-            alt=""
-            className="widgetSmImg"
-          />
-          <div className="widgetSmUser">
-            <span className="widgetSmUsername">Anas chebli </span>
-            <span className="widgetSmUserTitle">Sfax</span>
-          </div>
-          <button className="widgetSmButton">
-            
-            Display
-          </button>
-        </li>
-        <li className="widgetSmListItem">
-          <img
-            src="https://images.pexels.com/photos/3992656/pexels-photo-3992656.png?auto=compress&cs=tinysrgb&dpr=2&w=500"
-            alt=""
-            className="widgetSmImg"
-          />
-          <div className="widgetSmUser">
-            <span className="widgetSmUsername">Rami Sliman </span>
-            <span className="widgetSmUserTitle">Sousse </span>
-          </div>
-          <button className="widgetSmButton">
-            
-            Display
-          </button>
-        </li>
-      </ul>
+        </ul>
+               </>))
+               
+              
+      }
+      
     </div>
   );
 }

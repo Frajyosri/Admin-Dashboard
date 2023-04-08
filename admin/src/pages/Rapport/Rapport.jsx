@@ -1,7 +1,20 @@
 import React from 'react';
 import "./Rapport.css"
 import img from "../.././2953962.jpg";
+import useSWR from "swr"
+import useSWRImmutable from 'swr/immutable'
+import axios from 'axios';
+import moment from "moment"
 const Rapport = () => {
+  const fetcher = url => axios.get("http://localhost:8000/api/admin/Reclamation").then((res)=>res.data.Reclamation)
+  const {data,error}=useSWR("http://localhost:8000/api/admin/Reclamation",{
+    revalidateIfStale: true,
+    revalidateOnFocus: true,
+    revalidateOnReconnect: true
+  }
+  )
+  useSWRImmutable("http://localhost:8000/api/admin/Reclamation",fetcher)
+  console.log(data)
     const dateBuilder=(d)=>{
         let months =["january","february","March","April",
         "May","June","July","August","September","october","November","December"];
@@ -12,51 +25,47 @@ const Rapport = () => {
         let annee = d.getFullYear();
         return `${day} ${date} ${Month} ${annee}`
         }
-        const [data,setdata]=React.useState([]);
     return (
         <div className='rapport'>
              <div className='date'>
             {dateBuilder(new Date())}
           </div>
             <h1>Tous  les Reclamations </h1>
-            {  data.length ===0 ?
+            { data===undefined ||data.length===0?
               <div className='vide '>
                 <img src={img} alt='no Data '/>
                 <h3 className='videT '>Aucune Reclamation  ..</h3>
                 </div>
                 :
-                <>
-                <div className='wraprapport'>
+                data.map((recl)=>(
+                  <>
+                  {!recl.Rapport.Content ===undefined ? 
+                  <div className='vide '>
+                  <img src={img} alt='no Data '/>
+                  <h3 className='videT '>Aucune Reclamation  ..</h3>
+                  </div>
+                  :
+                  <>
+                  <div className='wraprapport' key={recl.id}>
                     <div className='singlraport'>
-                    <img src="https://images.pexels.com/photos/4172933/pexels-photo-4172933.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt="user_img" />
+                    <img src="https://th.bing.com/th/id/OIP.uvrjP3go_-Rhd_jliyvIiQAAAA?w=180&h=180&c=7&r=0&o=5&pid=1.7" alt="user_img" />
                     <div className='content'>
-                     <h2>Touhami machakel </h2>
-                    <p>Ma aajebni chay ani hor ka mowaten </p>
+                     <h2>{recl.nom} {recl.prenom}</h2>
+                    <p>{recl.Rapport[0].Content} </p>
                     </div> 
-                  <p className='hour'>1 hour ago </p>
+                  <p className='hour'>
+                  {recl.Rapport[0].Date=moment("20230408","YYYYMMDD").fromNow()}
+                  </p>
                 </div>
                 </div>
-                <div className='wraprapport'>
-                    <div className='singlraport'>
-                    <img src="https://images.pexels.com/photos/4172933/pexels-photo-4172933.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt="user_img" />
-                    <div className='content'>
-                     <h2>Touhami machakel </h2>
-                    <p>Ma aajebni chay ani hor ka mowaten </p>
-                    </div> 
-                  <p className='hour'>1 hour ago </p>
-                </div>
-                </div>
-                <div className='wraprapport'>
-                    <div className='singlraport'>
-                    <img src="https://images.pexels.com/photos/4172933/pexels-photo-4172933.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt="user_img" />
-                    <div className='content'>
-                     <h2>Touhami machakel </h2>
-                    <p>Ma aajebni chay ani hor ka mowaten </p>
-                    </div> 
-                  <p className='hour'>1 hour ago </p>
-                </div>
-                </div>
-                </>
+                  </>
+                
+                }
+                
+              </>
+
+                ))
+                
                 }
            
             </div>

@@ -8,6 +8,7 @@ import "./Home.css";
 import { useNavigate } from 'react-router-dom';
 
 
+
 const Home = () => {
   const dateBuilder=(d)=>{
     let months =["january","february","March","April",
@@ -21,16 +22,13 @@ const Home = () => {
     }
 
     const User=localStorage.getItem("token");
-  
     const navigate=useNavigate()
     React.useEffect(() => {
       if(User===null){ 
-       
       navigate("/login");
     }
-  
-    }, [User,navigate]);
 
+    }, [User,navigate]);
 
     return (
         <>

@@ -16,7 +16,11 @@ import Password from "./pages/Forgetpasword/password.jsx";
 import Rapport from "./pages/Rapport/Rapport";
 import Historique from "./pages/historique/historique.jsx";
 import Edite from "./pages/editeProduct/editeProduct.jsx";
-import Search from "./pages/SearchProduct/SearchProduct.jsx"
+import Search from "./pages/SearchProduct/SearchProduct.jsx";
+import SearchComercant from "./pages/searchComercant/search.jsx";
+import Livreur from "./pages/livreur/livreur";
+import SearchLivreur from "./pages/searchLivreur/SearchLivreur";
+import Detail from "./pages/detailCommande/detail";
 const router = createBrowserRouter([
     
       {
@@ -41,6 +45,17 @@ const router = createBrowserRouter([
           </div> ,
           errorElement:<Error/>
         },
+        {
+          path: "/livreur",
+          element:
+            <div className='container'>    
+            <Sidbar/>
+            <div className="other">
+              <Livreur/>
+            </div>
+            </div> ,
+            errorElement:<Error/>
+          },
       {
         path: "/commande",
         element: 
@@ -134,6 +149,36 @@ const router = createBrowserRouter([
     <Sidbar/>
     <div className="other">
       <Search/>
+    </div>
+    </div> 
+  },
+  {
+    path:"/searchlivreur",
+    element:
+    <div className='container'>    
+    <Sidbar/>
+    <div className="other">
+      <SearchLivreur/>
+    </div>
+    </div> 
+  },
+  {
+    path:"/searchComercant",
+    element:
+    <div className='container'>    
+    <Sidbar/>
+    <div className="other">
+      <SearchComercant/>
+    </div>
+    </div> 
+  },
+  {
+    path:"/detail/:id",
+    element:
+    <div className='container'>    
+    <Sidbar/>
+    <div className="other">
+      <Detail/>
     </div>
     </div> 
   }

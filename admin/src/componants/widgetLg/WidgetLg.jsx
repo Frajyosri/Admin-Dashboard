@@ -1,85 +1,64 @@
 import "./widgetLg.css";
-
+import useSWR from "swr"
+import moment from "moment"
+import axios from 'axios';
 export default function WidgetLg() {
+  
+  const fetcher = url => axios.get("http://localhost:8000/api/admin/lastCommande").then((res)=>res.data)
+  const {data}=useSWR("http://localhost:8000/api/admin/lastCommande",fetcher)
+  console.log(data)
   const Button = ({ type }) => {
     return <button className={"widgetLgButton " + type}>{type}</button>;
   };
   return (
+
     <div className="widgetLg">
       <h3 className="widgetLgTitle">Les Dernier  Commandes </h3>
+      {!data || data.length === 0?
+       <div className='vide '>
+       <h3 className='videtext '>Aucune Nouveux Nouveaux Commande   ..</h3>
+       </div>
+      :
       <table className="widgetLgTable">
-        <tr className="widgetLgTr">
-          <th className="widgetLgTh">Client </th>
-          <th className="widgetLgTh">Date</th>
-          <th className="widgetLgTh">Responsable </th>
-          <th className="widgetLgTh">Montant </th>
-          <th className="widgetLgTh">Status</th>
-        </tr>
+      <tr className="widgetLgTr">
+        <th className="widgetLgTh">Client </th>
+        <th className="widgetLgTh">Date</th>
+        <th className="widgetLgTh">Responsable </th>
+        <th className="widgetLgTh">Payé </th>
+        <th className="widgetLgTh">Etat</th>
+      </tr>
+      {data.map((cmd)=>(
+        <>
+       
         <tr className="widgetLgTr">
           <td className="widgetLgUser">
             <img
-              src="https://images.pexels.com/photos/4172933/pexels-photo-4172933.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
+              src="https://th.bing.com/th/id/OIP.llkcvAulBp_qTfYnqOWE6AHaHW?w=215&h=212&c=7&r=0&o=5&pid=1.7"
               alt=""
               className="widgetLgImg"
             />
-            <span className="widgetLgName">Monjiya el souda </span>
+            <span className="widgetLgName">{cmd.Client.nom} {cmd.Client.prenom}  </span>
           </td>
-          <td className="widgetLgDate">2 Jun 2021</td>
-          <td className="widgetLgNam">Mohsen Rabhi</td>
-          <td className="widgetLgAmount">122.00DT</td>
+          <td className="widgetLgDate">{cmd.Date_cmd=moment().format("YYYY MMMM dddd")} </td>
+          <td className="widgetLgNam">{cmd.commercant.Nom } {cmd.commercant.prenom } </td>
+          <td className="widgetLgAmount">
+            {
+              cmd.ispayed===false?
+              <button className="notPayed">non  payé </button>
+              :
+              <button className="isPayed">payé</button>
+            }
+          </td>
           <td className="widgetLgStatus">
             <Button type="Confirmer" />
           </td>
         </tr>
-        <tr className="widgetLgTr">
-          <td className="widgetLgUser">
-            <img
-              src="https://images.pexels.com/photos/4172933/pexels-photo-4172933.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
-              alt=""
-              className="widgetLgImg"
-            />
-            <span className="widgetLgName">Maram Marouma </span>
-          </td>
-          <td className="widgetLgDate">2 Jun 2021</td>
-          <td className="widgetLgNam">Mohsen Rabhi</td>
-          <td className="widgetLgAmount">122.00DT</td>
-          <td className="widgetLgStatus">
-            <Button type="En_Cours" />
-          </td>
-        </tr>
-        <tr className="widgetLgTr">
-          <td className="widgetLgUser">
-            <img
-              src="https://images.pexels.com/photos/4172933/pexels-photo-4172933.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
-              alt=""
-              className="widgetLgImg"
-            />
-            <span className="widgetLgName">Nabil naboula </span>
-          </td>
-          <td className="widgetLgDate">2 Jun 2021</td>
-          <td className="widgetLgNam">Mohsen Rabhi</td>
-          <td className="widgetLgAmount">122.00DT</td>
-          <td className="widgetLgStatus">
-            <Button type="Confirmer " />
-          </td>
-        </tr>
-        <tr className="widgetLgTr">
-          <td className="widgetLgUser">
-            <img
-              src="https://images.pexels.com/photos/4172933/pexels-photo-4172933.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
-              alt=""
-              className="widgetLgImg"
-            />
-            <span className="widgetLgName">souad bouzidi </span>
-          </td>
-          <td className="widgetLgDate">2 Jun 2021</td>
-          <td className="widgetLgNam">Mohsen Rabhi</td>
-          <td className="widgetLgAmount">122.00DT</td>
-          <td className="widgetLgStatus">
-            <Button type="Confirmer" />
-          </td>
-        </tr>
-      </table>
+      
+        </>
+    
+      ))}
+    </table>
+}
     </div>
   );
 }
