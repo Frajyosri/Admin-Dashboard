@@ -6,7 +6,7 @@ import useSWR from "swr"
 import useSWRImmutable from 'swr/immutable'
 const Addproduct = () => {
   const fetcher = url => axios.get("http://localhost:8000/api/admin/AllObjective").then((res)=>res.data.Objective)
-  const {data,error}=useSWR("http://localhost:8000/api/admin/AllObjective",{
+  const {data}=useSWR("http://localhost:8000/api/admin/AllObjective",{
     revalidateIfStale: false,
     revalidateOnFocus: false,
     revalidateOnReconnect: false
@@ -30,6 +30,7 @@ const Addproduct = () => {
 .then(res=>{
      swal("Success", "Objective Added Successfully", "success")
  })
+ window.location.reload()
 .catch(err=>{
      console.log(err)
      swal("Error", "Something Went Wrong", "error")

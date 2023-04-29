@@ -76,9 +76,9 @@ const handelchangeCategory=e=>{
     e.preventDefault();
     try {
       const res= await axios.post("http://localhost:8000/api/admin/produit",{
-        nom:nom,
+        nom_produit:nom,
         description:description,
-        prix:prix,
+        prix_produit:prix,
         color:color,
         idcategory:idcategory,
         pat:pat,

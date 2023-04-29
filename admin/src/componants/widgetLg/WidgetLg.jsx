@@ -37,10 +37,10 @@ export default function WidgetLg() {
               alt=""
               className="widgetLgImg"
             />
-            <span className="widgetLgName">{cmd.Client.nom} {cmd.Client.prenom}  </span>
+            <span className="widgetLgName">{cmd.Client.nomCli} {cmd.Client.prenomCli}  </span>
           </td>
           <td className="widgetLgDate">{cmd.Date_cmd=moment().format("YYYY MMMM dddd")} </td>
-          <td className="widgetLgNam">{cmd.commercant.Nom } {cmd.commercant.prenom } </td>
+          <td className="widgetLgNam">{cmd.commercant.NomCom } {cmd.commercant.prenomCom } </td>
           <td className="widgetLgAmount">
             {
               cmd.ispayed===false?
@@ -50,7 +50,7 @@ export default function WidgetLg() {
             }
           </td>
           <td className="widgetLgStatus">
-            <Button type="Confirmer" />
+            <Button type={cmd.etat} />
           </td>
         </tr>
       

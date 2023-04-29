@@ -21,6 +21,7 @@ import SearchComercant from "./pages/searchComercant/search.jsx";
 import Livreur from "./pages/livreur/livreur";
 import SearchLivreur from "./pages/searchLivreur/SearchLivreur";
 import Detail from "./pages/detailCommande/detail";
+import Statistique from "./pages/Statistique/Statistique";
 const router = createBrowserRouter([
     
       {
@@ -181,7 +182,17 @@ const router = createBrowserRouter([
       <Detail/>
     </div>
     </div> 
+  },{
+    path:"/statistique",
+    element:
+    <div className='container'>    
+    <Sidbar/>
+    <div className="other">
+      <Statistique/>
+    </div>
+    </div> 
   }
+
 
 
 ]);

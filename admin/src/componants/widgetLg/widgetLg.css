@@ -50,8 +50,12 @@
   background-color: #e5faf2;
   color: #3bb077;
 }
-.widgetLgButton.En_Cours{
-  background-color: #fff0f1;
+.widgetLgButton.en_route{
+  background-color: #ffffff;
+  color: #ff0a0a;
+}
+.widgetLgButton.livrer{
+  background-color: #fdfdfd;
   color: #d95087;
 }
 .isPayed{
@@ -59,8 +63,8 @@
   border: none;
   border-radius: 10px;
   background-color: #e5faf2;
-  color: #3bb077;
-  width: 20px;
+  color: #3c4cf7;
+  width: 70px;
 }
 .notPayed{
   padding: 5px 7px;

@@ -1,9 +1,8 @@
 import React from 'react';
 import axios from 'axios';
-import { FaCheck, FaRedoAlt, FaTrashAlt } from 'react-icons/fa';
-import { Link } from 'react-router-dom';
-import swal from 'sweetalert';
+import { FaTrashAlt } from 'react-icons/fa';
 import img from "../.././2953962.jpg";
+import swal from 'sweetalert';
 const SearchLivreur = () => {
     const [data,setdata]=React.useState([]);
     const [query,Setquery]=React.useState('');
@@ -51,17 +50,39 @@ const SearchLivreur = () => {
                     <tr className="widgetLgTr">
                     <td className="widgetLgUser">
                       <img
-                        src={com.image}
+                        src="https://th.bing.com/th/id/OIP.mjvXBLUGLahtSe83JK2WpAAAAA?pid=ImgDet&rs=1"
                         alt=""
                         className="widgetLgImg"
                       />
-                      <span className="widgetLgName">  {com.nom } { com.prenom}  </span>
+                      <span className="widgetLgName">  {com.nomliv } { com.prenomliv}  </span>
                     </td>
-                    <td className="widgetLgDate">{com.Adress} </td>
+                    <td className="widgetLgDate">{com.adress} </td>
                     <td className="widgetLgNam">{com.email}</td>
                     <td className="widgetLgAmount">{com._count.commande}</td>
                     <td className="widgetLgStatus">
-                    <button className='hidbtn'><FaTrashAlt className='next'/></button> 
+                    <button className='hidbtn' 
+                    onClick={(e)=>{
+                      e.preventDefault();
+                      swal({
+                        title: "Are you sure?",
+                        text: "Once deleted, you will not be able to see this livreur anymore !",
+                        icon: "warning",
+                        buttons: true,
+                        dangerMode: true,
+                      })
+                      .then((willDelete) => {
+                        if (willDelete) {
+                         const response=  axios.delete(`http://localhost:8000/api/admin/livreur/${com.id}`)
+                          swal("Poof! Livreur has been deleted!", {
+                            icon: "success",
+                          });
+                          window.location.reload();
+                        } else {
+                          swal("livreur Not deleted ");
+                        }
+                      });
+                 }} 
+                    ><FaTrashAlt className='next'/></button> 
                     </td>
                   </tr>
                 ))}

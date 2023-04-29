@@ -1,12 +1,11 @@
-import React from 'react';
+import React,{useState} from 'react';
 import Chart from '../charts/chart';
 import Widget from '../widget/widget';
-import { userData } from "../../dummyData";
 import WidgetLg from '../widgetLg/WidgetLg'; 
 import  WidgetSm from "../widgetSm/WidgetSm";
 import "./Home.css";
 import { useNavigate } from 'react-router-dom';
-
+import axios from 'axios';
 
 
 const Home = () => {
@@ -22,13 +21,20 @@ const Home = () => {
     }
 
     const User=localStorage.getItem("token");
+   const [Statis,SetStatis]= useState([]);
     const navigate=useNavigate()
+    //UseEfect Hook
     React.useEffect(() => {
       if(User===null){ 
       navigate("/login");
     }
-
+    const GetStats=async()=>{
+      const stats = await axios.get("http://localhost:8000/api/admin/stats")
+          SetStatis(stats.data.stat)
+        }
+    GetStats()
     }, [User,navigate]);
+    //End UseEffect Hook 
 
     return (
         <>
@@ -38,13 +44,11 @@ const Home = () => {
                  {dateBuilder(new Date())}
         </div>
         <Widget/>
-        <Chart data={userData} title="Commande  Analytics" grid dataKey="Total Commande "/>
+        {<Chart data={Statis} title="Commande  Analytics"/>}
       <div className="homeWidgets">
         <WidgetLg/>
         <WidgetSm/>
       </div>
-        
-
         </>
        
     );

@@ -1,20 +1,13 @@
 import React from 'react';
 import "./Rapport.css"
 import img from "../.././2953962.jpg";
-import useSWR from "swr"
-import useSWRImmutable from 'swr/immutable'
+import useSWR from "swr";
 import axios from 'axios';
 import moment from "moment"
 const Rapport = () => {
-  const fetcher = url => axios.get("http://localhost:8000/api/admin/Reclamation").then((res)=>res.data.Reclamation)
-  const {data,error}=useSWR("http://localhost:8000/api/admin/Reclamation",{
-    revalidateIfStale: true,
-    revalidateOnFocus: true,
-    revalidateOnReconnect: true
-  }
-  )
-  useSWRImmutable("http://localhost:8000/api/admin/Reclamation",fetcher)
-  console.log(data)
+  const fetcher = url => axios.get("http://localhost:8000/api/admin/Reclamation").then((res)=>res.data)
+  const {data}=useSWR("http://localhost:8000/api/admin/Reclamation",fetcher)
+ 
     const dateBuilder=(d)=>{
         let months =["january","february","March","April",
         "May","June","July","August","September","october","November","December"];
@@ -38,31 +31,19 @@ const Rapport = () => {
                 </div>
                 :
                 data.map((recl)=>(
-                  <>
-                  {!recl.Rapport.Content ===undefined ? 
-                  <div className='vide '>
-                  <img src={img} alt='no Data '/>
-                  <h3 className='videT '>Aucune Reclamation  ..</h3>
-                  </div>
-                  :
-                  <>
                   <div className='wraprapport' key={recl.id}>
                     <div className='singlraport'>
                     <img src="https://th.bing.com/th/id/OIP.uvrjP3go_-Rhd_jliyvIiQAAAA?w=180&h=180&c=7&r=0&o=5&pid=1.7" alt="user_img" />
                     <div className='content'>
-                     <h2>{recl.nom} {recl.prenom}</h2>
-                    <p>{recl.Rapport[0].Content} </p>
+                     <h2>{recl.nomCli} {recl.prenomCli}</h2>
+                    <p>{recl.Content} </p>
                     </div> 
                   <p className='hour'>
-                  {recl.Rapport[0].Date=moment("20230408","YYYYMMDD").fromNow()}
+                  {recl.Date_Rapport=moment("20230408","YYYYMMDD").fromNow()}
                   </p>
                 </div>
                 </div>
-                  </>
-                
-                }
-                
-              </>
+                 
 
                 ))
                 

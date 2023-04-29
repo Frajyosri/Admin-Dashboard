@@ -1,0 +1,85 @@
+.dateS{
+    text-align: center;
+    font-size: 40px;
+    font-weight: 400;
+    margin: 25px ;
+    color: #3e31f8;
+}
+.explecation{
+    display: flex;
+    gap: 10px ;
+    padding-left: 15px ;
+    width: 70%;
+    height: 35px;
+    margin-top: 70px;
+    margin-bottom: 100px ;
+    justify-content: center;
+    align-items: center;
+    margin-left: 30px;
+}
+.not{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.Rcolor{
+    background-color: #f90000;
+    margin-right: 12px;
+    width: 20px;
+    height: 20px;
+}
+.Ncolor{
+    background-color: #539165;
+    margin-right: 12px;
+    width: 20px;
+    height: 20px;
+}
+
+.Ocolor{
+    background-color: #F7C04A;
+    margin-right: 12px;
+    width: 20px;
+    height: 20px;
+}
+.Lcolor{
+    background-color: #3F497F;
+    margin-right: 12px;
+    width: 20px;
+    height: 20px;
+}
+.Vcolor{
+    background-color: #0dff00;
+    margin-right: 12px;
+    width: 20px;
+    height: 20px;
+}
+.kcolor{
+    background-color: #00f9a2;
+    margin-right: 12px;
+    width: 20px;
+    height: 20px;
+}
+.Bcolor{
+    background-color: #1100f9;
+    margin-right: 12px;
+    width: 20px;
+    height: 20px;
+}
+.Titel{
+    margin-left: 30px ;
+    font-size: 25px ;
+    margin-top: 34px ;
+
+}
+.CTitel{
+    margin-left: 30px ;
+    font-size: 25px ;
+    margin-top: 100px ;
+    text-align: center;
+}
+.Com{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}

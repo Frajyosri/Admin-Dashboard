@@ -28,7 +28,7 @@ const Historique = () => {
               data.map((item)=>(
                 <>   
             <div className="histpaiment" >
-            <span>{item.Nom } { item.prenom} </span> 
+            <span>{item.NomCom } { item.prenomCom} </span> 
             <table className="widgetLgTablepaiment ">
                 <tbody>
             <tr className="widgetLgTr" key={item.id}>

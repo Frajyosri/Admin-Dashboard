@@ -3,7 +3,6 @@ import { FaTrashAlt,FaRedoAlt, FaSistrix, FaCheck} from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import "./user.css";
 import useSWR from "swr"
-import useSWRImmutable from 'swr/immutable'
 import axios from 'axios';
 import img from "../.././2953962.jpg";
 import swal from 'sweetalert';
@@ -20,13 +19,7 @@ const User = () => {
     }
   }, [User,navigate]);
   const fetcher = url => axios.get("http://localhost:8000/api/admin/Comercant").then((res)=>res.data)
-  const {data,error}=useSWR("http://localhost:8000/api/admin/Comercant",{
-    revalidateIfStale: true,
-    revalidateOnFocus: true,
-    revalidateOnReconnect: true
-  }
-  )
-  useSWRImmutable("http://localhost:8000/api/admin/Comercant",fetcher)
+  const {data}=useSWR("http://localhost:8000/api/admin/Comercant",fetcher)
   console.log(data)
     return (
         <div>
@@ -62,7 +55,7 @@ const User = () => {
                         alt=""
                         className="widgetLgImg"
                       />
-                      <span className="widgetLgName"> <Link to={`/historique/${com.id}`} className="link"> {com.Nom } { com.prenom}</Link>  </span>
+                      <span className="widgetLgNom"> <Link to={`/historique/${com.id}`} className="link"> {com.NomCom } { com.prenomCom}</Link>  </span>
                     </td>
                     <td className="widgetLgDate">{com.Adress} </td>
                     <td className="widgetLgNam">{com.email}</td>
@@ -93,6 +86,7 @@ const User = () => {
                           swal("Poof! Commerçant has been deleted!", {
                             icon: "success",
                           });
+                          window.location.reload();
                         } else {
                           swal("Commerçant Not deleted ");
                         }
@@ -103,7 +97,9 @@ const User = () => {
                     e.preventDefault();
                     const res=await axios.put(`http://localhost:8000/api/admin/commercant/reset/${com.id}`)
                     console.log(res)
-                   }} >< FaRedoAlt className='next'/></button> 
+                    window.location.reload();
+                   }} >
+                    < FaRedoAlt className='next'/></button> 
                    <button className='hidbtn' onClick={async(e)=>{
                     const response=await axios.post(`http://localhost:8000/api/admin/historique/${com.id}`,{
                       montant:com.montant_actuelle,
@@ -112,6 +108,7 @@ const User = () => {
                       swal("Poof! Commerçant Salary  has been Updated!", {
                         icon: "success",
                       });
+                      window.location.reload();
                     }
                    }}><FaCheck className='next'/></button> 
                     </td>

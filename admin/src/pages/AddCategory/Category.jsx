@@ -20,7 +20,7 @@ const Category = () => {
                     icon: "success",
                     button: "OK",
                 });
-            
+             window.location.reload()
              SetCategory("");
             }
         } catch (error) {

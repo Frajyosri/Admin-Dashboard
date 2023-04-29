@@ -2,6 +2,11 @@
     display: flex;
     align-items: center;
 }
+.Titel{
+    font-size: 24;
+    padding-left: 60px;
+    font-weight: bold;
+}
 .card-body{
     display: flex;
     justify-content: space-around;

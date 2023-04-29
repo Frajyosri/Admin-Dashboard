@@ -5,9 +5,9 @@ import swal from 'sweetalert';
 const EditeProduct = () => {
   const navigate=useNavigate()
   const [formData, setFormData] = useState({
-    nom:"",
+    nom_Produit:"",
     description:"",
-    prix:0.0,
+    prix_produit:0.0,
     color:"",
     pht:0.0,
     pat:0.0,
@@ -23,9 +23,9 @@ const EditeProduct = () => {
     event.preventDefault();
     try {
        axios.put(`http://localhost:8000/api/admin/produit/${id}`, {
-        nom:formData.nom,
+        nom_Produit:formData.nom_Produit,
         description:formData.description,
-        prix: parseFloat(formData.prix) ,
+        prix_produit: parseFloat(formData.prix_produit) ,
         color:formData.color,
         pht:parseFloat(formData.pht),
         pat:parseFloat(formData.pat),
@@ -60,9 +60,9 @@ const EditeProduct = () => {
         <div className='addform '>
             <h1>Modifier Produit </h1>
       <form  method="post" onSubmit={handleSubmit}>
-      <input type="text" name="nom" placeholder='saisir le non de produit ' value={formData.nom} onChange={handleInputChange}  />
+      <input type="text" name="nom_Produit" placeholder='saisir le non de produit ' value={formData.nom} onChange={handleInputChange}  />
       <input type="text" name="description" placeholder='saisir une description de produit ' value={formData.description} onChange={handleInputChange} />
-      <input type="number" name="prix" placeholder='saisir le prix de produit ' value={formData.prix}  onChange={handleInputChange}  />
+      <input type="number" name="prix_produit" placeholder='saisir le prix de produit ' value={formData.prix}  onChange={handleInputChange}  />
       <div className='stock'>
         <h4>Le color disponible ? : </h4>
         <input type="color" name="color" className='spc'   onChange={handleInputChange}/>

@@ -52,13 +52,13 @@ const SearchProduct = () => {
         <tr className="widgetLgTr" key={element.id} >
         <td className="widgetLgUser" >
           <img
-            src={ `../../Uploads`+ `/`+`${element.image}` }
+            src={element.image}
             alt=""
             className="widgetLgImg"
           />
-          <span className="widgetLgName">{element.nom}</span>
+          <span className="widgetLgName">{element.nom_Produit}</span>
         </td>
-        <td className="widgetLgDate">{element.prix}</td>
+        <td className="widgetLgDate">{element.prix_produit}</td>
         <td className="widgetLgNam"><span> {element.idcategory} </span> </td>
         <td className="widgetLgStatus">
            <Link to={`/edite/${element.id}`} className="link"><FaPen className='next'/></Link> 

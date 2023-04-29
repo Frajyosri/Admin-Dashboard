@@ -70,7 +70,9 @@
   .widgetLgButton.en_route{
       background-color: #fff0f1;
       color: #d95087;
-  
   }
-  
+  .widgetLgButton.livré{
+    background-color: #fafafa;
+    color: #0582ff;
+}
   

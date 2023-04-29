@@ -1,6 +1,6 @@
 import React,{useState,useEffect} from 'react';
 import "./sidbar.css";
-import { FaAward, FaCartArrowDown, FaCartPlus, FaComment, FaHome, FaMapMarkerAlt, FaShareSquare, FaUserAlt } from 'react-icons/fa';
+import { FaAward, FaCartArrowDown, FaCartPlus, FaComment, FaHome, FaMapMarkerAlt, FaShareSquare, FaUserAlt,FaChartLine } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 
 
@@ -28,10 +28,12 @@ const Sidbar = () => {
                         <li className='sidbaritems'><FaCartArrowDown className='icon'/><Link to={"/product"} className="link">Produits</Link> </li>
                         <li className='sidbaritems'><FaUserAlt className='icon'/> <Link to={"/user"} className="link">commerçant</Link></li>
                         <li className='sidbaritems'><FaUserAlt className='icon'/> <Link to={"/livreur"} className="link">livreur</Link></li>
-                        <li className='sidbaritems'><FaCartPlus className='icon'/><Link to={"/commande"} className="link">Commandes</Link>  </li>
+                         <li className='sidbaritems'><FaCartPlus className='icon'/><Link to={"/commande"} className="link">Commandes</Link>  </li>
+                         <li className='sidbaritems'><FaChartLine className='icon'/><Link to={"/statistique"} className="link">Statistique</Link> </li>
                         <li className='sidbaritems'> <FaAward className='icon'/> <Link to={"/objective"} className="link">Objective</Link> </li>
                         <li className='sidbaritems'><FaMapMarkerAlt className='icon'/><Link to={"/location"} className="link">Geographie</Link> </li>
                         <li className='sidbaritems'><FaComment className='icon'/><Link to={"/rapport"} className="link">Rapport</Link> </li>
+                       
                         <li className='sidbarlogout'><button className='ibtn ' onClick={handelLogout}><FaShareSquare className='icon' /><Link to={"/login"} className="link"> Exit </Link></button>  </li>
                       </ul>
                 </div>

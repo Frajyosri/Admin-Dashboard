@@ -18,7 +18,7 @@ const Product = () => {
       const [open, setOpen] = React.useState(false);
       const [open1, setOpen1] = React.useState(false);
 
-      const {data,error}=useSWR("http://localhost:8000/api/admin/produit",(url)=>{
+      const {data}=useSWR("http://localhost:8000/api/admin/produit",async(url)=>{
         return axios.get("http://localhost:8000/api/admin/produit").then((res)=>res.data.Product);
       })
       const handleClickOpen = () => {
@@ -71,9 +71,9 @@ const Product = () => {
           <img  src={element.image}  alt=""
             className="widgetLgImg"
           />
-          <span className="widgetLgName">{element.nom}</span>
+          <span className="widgetLgName">{element.nom_Produit}</span>
         </td>
-        <td className="widgetLgDate">{element.prix}</td>
+        <td className="widgetLgDate">{element.prix_produit}</td>
         <td className="widgetLgNam"><span> {element.idcategory} </span> </td>
         <td className="widgetLgStatus">
            <Link to={`/edite/${element.id}`} className="link"><FaPen className='next'/></Link> 

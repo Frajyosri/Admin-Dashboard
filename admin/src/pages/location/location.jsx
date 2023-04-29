@@ -12,32 +12,23 @@ var userIcon = L.icon({
 });
 const Location = () => {
     const [comande,setcomand]=React.useState([])
-    const [location,setlocation]=React.useState({});
+
     const navigate=useNavigate();
     
     React.useEffect(()=>{
-        const GetCurentPosition=()=>{
-            const location=navigator.geolocation.getCurrentPosition((position)=>{
-                setlocation({
-                    lat:position.coords.latitude,
-                    lng:position.coords.longitude
-                })
-            })
-        }
+        
        const GetCommandePosition=async()=>{
         const response=await axios("http://localhost:8000/api/admin/Commande")
         console.log(response.data)
         setcomand(response.data)
        }
        GetCommandePosition();
-       GetCurentPosition()
+    
     },[])
-   console.log(location)
    
     const User=localStorage.getItem("token");
     useEffect(() => {
       if(User===null){ 
-         
         navigate("/login");
       }
     }, [User,navigate]);
@@ -52,11 +43,11 @@ const Location = () => {
      <Marker position={[cmd.lat,  cmd.long]} icon={userIcon} >
      <Popup>
          <div className="commande">
-           <p><span>Client :</span>{cmd.Client.nom} {cmd.Client.prenom}   </p> 
-           <span>Tel/Client: {cmd.Client.phone}</span>
+           <p><span>Client :</span>{cmd.Client.nomCli} {cmd.Client.prenomCli}   </p> 
+           <span>Tel/Client: {cmd.Client.phoneCli}</span>
            <p><span>Date :</span>{cmd.Date_cmd}  </p>
-           <p><span>Responsable :</span>{cmd.commercant.Nom} {cmd.commercant.prenom} </p>
-           <p>Tel/commerçant : {cmd.commercant.phone}  </p>
+           <p><span>Responsable :</span>{cmd.commercant.NomCom} {cmd.commercant.prenomCom} </p>
+           <p>Tel/commerçant : {cmd.commercant.phoneCom}  </p>
            <span>Etat de Commande : {cmd.etat} </span>
          </div>
      </Popup>

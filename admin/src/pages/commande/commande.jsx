@@ -21,7 +21,6 @@ const Commande = () => {
   });
   const fetcher = url => axios.get("http://localhost:8000/api/admin/Commande").then((res)=>res.data)
   const {data}=useSWR("http://localhost:8000/api/admin/Commande",fetcher)
-  console.log(data)
   const dateBuilder=(d)=>{
     let months =["january","february","March","April",
     "May","June","July","August","September","october","November","December"];
@@ -39,11 +38,10 @@ const Commande = () => {
       const handelchange=e=>{
         setform({[e.target.name]:e.target.value})
    }
-   console.log(form)
+  
    React.useEffect(() => {
      const GetAlllivreur=async()=>{
       const reselt=await axios.get("http://localhost:8000/api/admin/livreurBydispo")
-      console.log(reselt.data.livreur)
       setlivreur(reselt.data.livreur)
      }
      GetAlllivreur()
@@ -78,10 +76,10 @@ const Commande = () => {
               alt=""
               className="widgetLgImg"
             />
-           <Link to={`/detail/${commande.id}`} className="link"><span className="widgetLgName">{commande.Client.nom} {commande.Client.prenom} </span></Link> 
+           <Link to={`/detail/${commande.id}`} className="link"><span className="widgetLgName">{commande.Client.nomCli} {commande.Client.prenomCli} </span></Link> 
           </td>
           <td className="widgetLgDate">{commande.Date_cmd=moment().format("MMM Do YY")} </td>
-          <td className="widgetLgNam">{commande.commercant.Nom} {commande.commercant.prenom} </td>
+          <td className="widgetLgNam">{commande.commercant.NomCom} {commande.commercant.prenomCom} </td>
           <td className="widgetLgAmount">
           {
               commande.ispayed===false?
@@ -115,13 +113,12 @@ const Commande = () => {
               const res= await axios.put(`http://localhost:8000/api/admin/Commande/${commande.id}`,{
                 idliv:parseInt(form.idliv)
               })
-               console.log(res)
-              console.log(form)
              if(res.statusText==="OK") {
                 swal("Un Livreur  a eté Definir Pour Ce Commande  ", "sucsses", {
                   button: "Ok ",
                 });
               }
+              window.location.reload()
           
           
           }}>Confirmer</button></td>

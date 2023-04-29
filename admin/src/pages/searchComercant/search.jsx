@@ -57,7 +57,7 @@ const Search = () => {
                         alt=""
                         className="widgetLgImg"
                       />
-                      <span className="widgetLgName"> <Link to={"/historique/1"} className="link"> {com.Nom } { com.prenom}</Link>  </span>
+                      <span className="widgetLgName"> <Link to={`/historique/${com.id}`} className="link"> {com.NomCom } { com.prenomCom}</Link>  </span>
                     </td>
                     <td className="widgetLgDate">{com.Adress} </td>
                     <td className="widgetLgNam">{com.email}</td>

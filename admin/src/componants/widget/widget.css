@@ -27,9 +27,12 @@
 .Rating{
     display: flex;
     align-items: center; 
-    color: rgb(67, 199, 31);  
+    color: rgb(15, 93, 249);  
 }
 .Subtitel{
     font-size: 12px;
-    margin-left: 100px;
+    margin-left: 75px;
+}
+.SubtitelC{
+    font-size: 12px;
 }
