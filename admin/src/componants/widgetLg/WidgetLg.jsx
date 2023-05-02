@@ -39,7 +39,7 @@ export default function WidgetLg() {
             />
             <span className="widgetLgName">{cmd.Client.nomCli} {cmd.Client.prenomCli}  </span>
           </td>
-          <td className="widgetLgDate">{cmd.Date_cmd=moment().format("YYYY MMMM dddd")} </td>
+          <td className="widgetLgDate">{moment(cmd.Date_cmd).calendar()} </td>
           <td className="widgetLgNam">{cmd.commercant.NomCom } {cmd.commercant.prenomCom } </td>
           <td className="widgetLgAmount">
             {

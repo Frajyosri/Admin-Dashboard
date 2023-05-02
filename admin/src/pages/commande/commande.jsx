@@ -78,7 +78,7 @@ const Commande = () => {
             />
            <Link to={`/detail/${commande.id}`} className="link"><span className="widgetLgName">{commande.Client.nomCli} {commande.Client.prenomCli} </span></Link> 
           </td>
-          <td className="widgetLgDate">{commande.Date_cmd=moment().format("MMM Do YY")} </td>
+          <td className="widgetLgDate">{moment(commande.Date_cmd).calendar()} </td>
           <td className="widgetLgNam">{commande.commercant.NomCom} {commande.commercant.prenomCom} </td>
           <td className="widgetLgAmount">
           {

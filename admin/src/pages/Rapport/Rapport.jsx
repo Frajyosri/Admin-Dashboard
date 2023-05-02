@@ -39,12 +39,10 @@ const Rapport = () => {
                     <p>{recl.Content} </p>
                     </div> 
                   <p className='hour'>
-                  {recl.Date_Rapport=moment("20230408","YYYYMMDD").fromNow()}
+                  {moment(recl.Date, "YYYYMMDD").fromNow()}
                   </p>
                 </div>
                 </div>
-                 
-
                 ))
                 
                 }
