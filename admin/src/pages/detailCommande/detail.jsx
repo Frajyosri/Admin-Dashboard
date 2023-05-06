@@ -18,43 +18,7 @@ const Detail = () => {
         GetFacture()
     },[id])
     console.log(Facture)
-    var nom_com,prenom,nom_cli,prenom_cli,phone_com,phone_cli,montant,dateFact,nomliv,prenomliv;
-    if (Facture.length > 0 && 'NomCom' in Facture[0] && 'nomliv' in Facture[0] && 'prenomliv' in Facture[0]){
-         nom_com = Facture[0]['NomCom']
-         nomliv=Facture[0]['nomliv']
-         prenomliv=Facture[0]['prenomliv']
-    }
-   else{
-       nom_com=null;
-   }
-   if (Facture.length > 0 && 'prenomCom' in Facture[0]){
-    prenom = Facture[0]['prenomCom']
-    }
-    else{
-     prenom=null;
-    }
-    if (Facture.length > 0 && 'phoneCom' in Facture[0]){
-        phone_com = Facture[0]['phoneCom']
-        }
-        else{
-         phone_com=null;
-        }
-        if (Facture.length > 0 && 'phoneCli' in Facture[0] && "montant" in Facture[0]){
-            phone_cli = Facture[0]['phoneCli']
-            montant=Facture[0]['montant']
-            }
-            else{
-             phone_cli=null;
-            }
-            if (Facture.length > 0 && 'nomCli' in Facture[0] && 'prenomCli' in Facture[0] && "dateFact" in Facture[0]){
-                nom_cli = Facture[0]['nomCli']
-                prenom_cli=Facture[0]['prenomCli']
-                dateFact=Facture[0]['dateFact']
-                }
-                else{
-                 nom_cli=null;
-                 prenom_cli=null;
-                }
+    
     return (
         <div>
            
@@ -64,17 +28,17 @@ const Detail = () => {
             </div>
             <div className="card-body">
                 <div className="client">
-                   <p><span>Facturé A :</span>{nom_cli} {prenom_cli } </p>  
-                   <p><span>Telephone:</span> +216 {phone_cli}</p>
+                   <p><span>Facturé A :</span>{Facture[0]?.nomCli} {Facture[0]?.nomCli} </p>  
+                   <p><span>Telephone:</span> +216 {Facture[0]?.phoneCli}</p>
                 </div>
                 <div className="client">
-                   <p><span>Facturé par :</span>{nom_com} {prenom} </p>  
-                   <p><span>Telephone:</span> +216 {phone_com} </p>
+                   <p><span>Facturé par :</span>{Facture[0]?.NomCom} {Facture[0]?.nomCom} </p>  
+                   <p><span>Telephone:</span> +216 {Facture[0]?.phoneCom} </p>
                 </div>
                 <div className="client">
-                   <p><span>Date:</span>{dateFact} </p>
+                   <p><span>Date:</span>{Facture[0]?.dateFact} </p>
                    <p><span>Code  Commande :</span>  {id} </p>
-                   <p><span>livré par :</span> {nomliv} {prenomliv}</p>
+                   <p><span>livré par :</span> {Facture[0]?.nomliv} {Facture[0]?.prenomliv}</p>
                 </div>
             </div>
             <div className="table">
@@ -104,7 +68,7 @@ const Detail = () => {
                     ))}
                     
                 </table>
-                <p className='Total'><span>TOTAL : </span> {montant} DT </p>
+                <p className='Total'><span>TOTAL : </span> {Facture[0]?.montant} DT </p>
                 <p className='Condition'><span>Condition ET Modelité de Payment</span>  </p>
                 <p className='remarque' >le paiment est du dans 15 jours / 1 moins Maximum  </p>
             </div>

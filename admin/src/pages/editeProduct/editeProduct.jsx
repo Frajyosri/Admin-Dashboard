@@ -60,9 +60,9 @@ const EditeProduct = () => {
         <div className='addform '>
             <h1>Modifier Produit </h1>
       <form  method="post" onSubmit={handleSubmit}>
-      <input type="text" name="nom_Produit" placeholder='saisir le non de produit ' value={formData.nom} onChange={handleInputChange}  />
+      <input type="text" name="nom_Produit" placeholder='saisir le non de produit ' value={formData.nom_Produit} onChange={handleInputChange}  />
       <input type="text" name="description" placeholder='saisir une description de produit ' value={formData.description} onChange={handleInputChange} />
-      <input type="number" name="prix_produit" placeholder='saisir le prix de produit ' value={formData.prix}  onChange={handleInputChange}  />
+      <input type="number" name="prix_produit" placeholder='saisir le prix de produit ' value={formData.prix_produit}  onChange={handleInputChange}  />
       <div className='stock'>
         <h4>Le color disponible ? : </h4>
         <input type="color" name="color" className='spc'   onChange={handleInputChange}/>
